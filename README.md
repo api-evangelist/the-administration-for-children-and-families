@@ -5,13 +5,13 @@ The Administration for Children and Families (ACF) is a branch of the U.S. Depar
 
 ## Scope
 
-- **Type:** Index 
+- **Type:** Contract 
 - **Position:** Consumer 
 - **Access:** 3rd-Party 
 
 ## Tags:
 
- - API
+ - Federal Government
 
 ## Timestamps
 
