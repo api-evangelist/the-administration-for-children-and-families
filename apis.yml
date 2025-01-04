@@ -3,11 +3,11 @@ url: >-
   https://raw.githubusercontent.com/api-search/the-administration-for-children-and-families/refs/heads/main/apis.yml
 name: The Administration for Children and Families
 tags:
-  - API
-type: Index
+  - Federal Government
+type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
-created: '2024-11-20'
+created: '2024-11-20T00:00:00.000Z'
 modified: '2025-01-03'
 position: Consumer
 description: >-
