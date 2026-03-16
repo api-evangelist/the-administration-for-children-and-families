@@ -8,7 +8,7 @@ type: Contract
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 created: '2024-11-20T00:00:00.000Z'
-modified: '2025-01-03'
+modified: '2026-03-16'
 position: Consumer
 description: >-
   The Administration for Children and Families (ACF) is a branch of the U.S.
@@ -22,7 +22,29 @@ description: >-
   support for child welfare services, childcare programs, and refugee
   assistance, among many other initiatives aimed at improving the lives of
   children and families across the country.
+apis:
+  - aid: the-administration-for-children-and-families:acf-api
+    name: Administration for Children and Families API
+    description: >-
+      The ACF provides programmatic access to data and resources related to
+      children, families, and communities through interoperable human services
+      data standards and APIs.
+    humanURL: https://www.acf.hhs.gov/
+    tags:
+      - Federal Government
+      - Children
+      - Families
+    properties:
+      - type: Documentation
+        url: https://acf.gov/additional-resources-and-documentation
+      - type: Website
+        url: https://www.acf.hhs.gov/
+common:
+  - type: Website
+    url: https://www.acf.hhs.gov/
+  - type: Documentation
+    url: https://acf.gov/additional-resources-and-documentation
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
 specificationVersion: '0.19'
