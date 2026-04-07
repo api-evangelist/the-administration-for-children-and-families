@@ -25,9 +25,9 @@ apis:
       data standards and APIs.
     humanURL: https://www.acf.hhs.gov/
     tags:
-      - Federal Government
       - Children
       - Families
+      - Federal Government
     properties:
       - type: Documentation
         url: https://acf.gov/additional-resources-and-documentation
