@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/api-evangelist/the-administration-for-children-and-families/blob/main/json-schema/acf-tanf-schema.json",
+  "title": "ACF TANF Data",
+  "description": "Schema for TANF (Temporary Assistance for Needy Families) program data as collected by ACF from state agencies under 45 CFR 265.",
+  "type": "object",
+  "definitions": {
+    "TANFCase": {
+      "title": "TANF Case",
+      "description": "A TANF household/case record with family composition and benefit information.",
+      "type": "object",
+      "properties": {
+        "caseId": {
+          "type": "string",
+          "description": "State-assigned case identifier"
+        },
+        "reportMonth": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-(0[1-9]|1[0-2])$",
+          "description": "Reporting month in YYYY-MM format"
+        },
+        "state": {
+          "type": "string",
+          "description": "State FIPS code"
+        },
+        "county": {
+          "type": "string",
+          "description": "County FIPS code"
+        },
+        "stratum": {
+          "type": "string",
+          "description": "Sample stratum (for statistical sampling)"
+        },
+        "zipCode": {
+          "type": "string",
+          "description": "Residential ZIP code"
+        },
+        "familyType": {
+          "type": "string",
+          "enum": ["Married Couple", "Unmarried Couple", "Single Parent"],
+          "description": "Type of family unit"
+        },
+        "numberOfChildren": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of children in the assistance unit"
+        },
+        "tanfAssistanceAmount": {
+          "type": "number",
+          "description": "Monthly TANF benefit amount in dollars"
+        },
+        "monthsOnTanf": {
+          "type": "integer",
+          "description": "Total months of federal TANF assistance (lifetime limit: 60 months)"
+        },
+        "workParticipation": {
+          "type": "boolean",
+          "description": "Whether a family member meets work participation requirements"
+        },
+        "workActivities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Unsubsidized Employment",
+              "Subsidized Private Employment",
+              "Subsidized Public Employment",
+              "Work Experience",
+              "On-the-Job Training",
+              "Job Search",
+              "Community Service",
+              "Vocational Educational Training",
+              "Job Skills Training",
+              "Education Directly Related to Employment",
+              "Secondary School",
+              "Satisfactory Attendance at Secondary School"
+            ]
+          },
+          "description": "Work-related activities the family is engaged in"
+        },
+        "sanction": {
+          "type": "boolean",
+          "description": "Whether the case has an active sanction"
+        }
+      },
+      "required": ["caseId", "reportMonth", "state"]
+    },
+    "TANFCaseloadSummary": {
+      "title": "TANF Caseload Summary",
+      "description": "Aggregate TANF caseload statistics for a state and month.",
+      "type": "object",
+      "properties": {
+        "state": {
+          "type": "string",
+          "description": "State FIPS code"
+        },
+        "reportMonth": {
+          "type": "string",
+          "description": "Reporting month in YYYY-MM format"
+        },
+        "totalFamilies": {
+          "type": "integer",
+          "description": "Total families receiving TANF assistance"
+        },
+        "totalRecipients": {
+          "type": "integer",
+          "description": "Total individual TANF recipients"
+        },
+        "totalChildren": {
+          "type": "integer",
+          "description": "Total children receiving TANF assistance"
+        },
+        "totalExpenditures": {
+          "type": "number",
+          "description": "Total TANF expenditures in dollars for the month"
+        },
+        "workParticipationRate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100,
+          "description": "Work participation rate as a percentage"
+        }
+      },
+      "required": ["state", "reportMonth"]
+    }
+  }
+}

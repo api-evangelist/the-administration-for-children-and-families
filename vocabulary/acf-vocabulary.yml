@@ -1,0 +1,199 @@
+vocabulary:
+  name: ACF Human Services Vocabulary
+  description: >-
+    Domain vocabulary for the Administration for Children and Families (ACF),
+    covering key programs, data systems, policy concepts, and human services
+    terminology used across ACF's portfolio.
+  version: '1.0'
+  created: '2026-05-03'
+  modified: '2026-05-03'
+
+terms:
+  - term: TANF
+    definition: >-
+      Temporary Assistance for Needy Families. A federal block grant program
+      established by the 1996 Personal Responsibility and Work Opportunity
+      Reconciliation Act. Provides states with funds to assist low-income
+      families with children through cash assistance, work programs, and
+      supportive services. Federal lifetime limit of 60 months.
+    domain: Programs
+    tags:
+      - Cash Assistance
+      - Programs
+      - Welfare
+
+  - term: CCDF
+    definition: >-
+      Child Care and Development Fund. A federal grant program that provides
+      subsidies to help low-income families afford child care while parents
+      work or attend school/training. States administer CCDF through vouchers
+      or direct payments to child care providers.
+    domain: Programs
+    tags:
+      - Child Care
+      - Programs
+      - Early Childhood
+
+  - term: Head Start
+    definition: >-
+      A federal program providing comprehensive early childhood education,
+      health, nutrition, and parent involvement services to low-income
+      children from birth to age 5 and their families. Operated by local
+      nonprofit and public organizations with ACF oversight.
+    domain: Programs
+    tags:
+      - Early Childhood
+      - Education
+      - Programs
+
+  - term: LIHEAP
+    definition: >-
+      Low Income Home Energy Assistance Program. A federal program helping
+      low-income households meet their home energy needs, including heating
+      and cooling costs and weatherization assistance.
+    domain: Programs
+    tags:
+      - Energy Assistance
+      - Programs
+
+  - term: AFCARS
+    definition: >-
+      Adoption and Foster Care Analysis and Reporting System. A mandatory
+      federal data collection system under 45 CFR 1355.40 that collects
+      case-level information on children in foster care and those adopted
+      with Title IV-E agency involvement. States report data semi-annually.
+    domain: Data Systems
+    tags:
+      - Child Welfare
+      - Data Systems
+      - Foster Care
+
+  - term: NCANDS
+    definition: >-
+      National Child Abuse and Neglect Data System. A voluntary federal
+      data collection system gathering case-level information from all 50
+      states and territories on child maltreatment reports, investigations,
+      dispositions, and services provided.
+    domain: Data Systems
+    tags:
+      - Child Abuse
+      - Data Systems
+      - Neglect
+
+  - term: NYTD
+    definition: >-
+      National Youth in Transition Database. Collects data on youth in foster
+      care and those who have aged out of the system, tracking outcomes in
+      education, employment, housing, and well-being through annual surveys.
+    domain: Data Systems
+    tags:
+      - Data Systems
+      - Foster Care
+      - Youth
+
+  - term: NDNH
+    definition: >-
+      National Directory of New Hires. A national database maintained by
+      ACF's Office of Child Support Services containing employment and
+      unemployment insurance data. Used for child support enforcement,
+      welfare oversight, and fraud detection.
+    domain: Data Systems
+    tags:
+      - Child Support
+      - Data Systems
+      - Employment
+
+  - term: Title IV-E
+    definition: >-
+      Section IV-E of the Social Security Act authorizing federal financial
+      participation in state foster care, adoption assistance, and kinship
+      guardianship assistance programs for eligible children.
+    domain: Policy
+    tags:
+      - Child Welfare
+      - Federal Funding
+      - Policy
+
+  - term: ICWA
+    definition: >-
+      Indian Child Welfare Act. A 1978 federal law establishing minimum
+      federal standards for removal of Native American children from their
+      families and placing them in foster care or adoptive homes, with
+      preference for tribal families.
+    domain: Policy
+    tags:
+      - Child Welfare
+      - Policy
+      - Tribal
+
+  - term: Work Participation Rate
+    definition: >-
+      A TANF performance measure tracking the percentage of families receiving
+      TANF who are engaged in federally-defined work activities. The federal
+      standard is 50% for all families and 90% for two-parent families.
+      States failing to meet rates face financial penalties.
+    domain: Performance Measures
+    tags:
+      - Performance
+      - TANF
+      - Work
+
+  - term: Kinship Care
+    definition: >-
+      Placement of a child in out-of-home care with a relative or close
+      family friend rather than an unrelated foster family. ACF promotes
+      kinship care as a preferred placement option that maintains family
+      connections for children in foster care.
+    domain: Child Welfare
+    tags:
+      - Child Welfare
+      - Foster Care
+      - Placement
+
+  - term: Permanency
+    definition: >-
+      The goal in child welfare to provide children with safe, stable, and
+      nurturing permanent homes. AFCARS tracks permanency goals including
+      reunification, adoption, legal guardianship, placement with relatives,
+      and planned permanent living arrangement (PPLA).
+    domain: Child Welfare
+    tags:
+      - Child Welfare
+      - Outcomes
+      - Policy
+
+  - term: FHIR
+    definition: >-
+      Fast Healthcare Interoperability Resources. A HL7 standard for health
+      and human services data exchange. ACF is pursuing FHIR-based standards
+      through its interoperability initiative to enable data sharing between
+      social services and health care systems.
+    domain: Technology Standards
+    tags:
+      - Interoperability
+      - Standards
+      - Technology
+
+  - term: USCDI Plus
+    definition: >-
+      United States Core Data for Interoperability Plus (USCDI+). An ONC
+      program allowing federal agencies to establish additional data elements
+      beyond the core USCDI standard. ACF is using USCDI+ to standardize
+      human services data elements for interoperability.
+    domain: Technology Standards
+    tags:
+      - Data Standards
+      - Interoperability
+      - Technology
+
+  - term: Mandatory Reporter
+    definition: >-
+      A professional (teacher, healthcare provider, social worker, etc.)
+      required by state law to report suspected child abuse or neglect to
+      the appropriate authorities. Mandatory reporters are a major source
+      category in NCANDS data.
+    domain: Child Protection
+    tags:
+      - Child Abuse
+      - Legal
+      - Reporting

@@ -1,0 +1,109 @@
+{
+  "@context": {
+    "@vocab": "https://schema.acf.hhs.gov/v1/",
+    "schema": "http://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "hl7": "http://hl7.org/fhir/",
+    "gov": "https://www.w3.org/ns/gov#",
+
+    "GovernmentOrganization": "schema:GovernmentOrganization",
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+
+    "ACF": {
+      "@id": "https://schema.acf.hhs.gov/v1/ACF",
+      "@type": "schema:GovernmentOrganization"
+    },
+
+    "Program": "schema:GovernmentService",
+    "TANF": {
+      "@id": "https://schema.acf.hhs.gov/v1/TANF",
+      "@type": "schema:GovernmentService"
+    },
+    "CCDF": {
+      "@id": "https://schema.acf.hhs.gov/v1/CCDF",
+      "@type": "schema:GovernmentService"
+    },
+    "HeadStart": {
+      "@id": "https://schema.acf.hhs.gov/v1/HeadStart",
+      "@type": "schema:GovernmentService"
+    },
+    "LIHEAP": {
+      "@id": "https://schema.acf.hhs.gov/v1/LIHEAP",
+      "@type": "schema:GovernmentService"
+    },
+
+    "Child": "schema:Person",
+    "age": {
+      "@id": "schema:age",
+      "@type": "xsd:integer"
+    },
+    "sex": {
+      "@id": "schema:gender",
+      "@type": "xsd:string"
+    },
+
+    "FosterCareCase": {
+      "@id": "https://schema.acf.hhs.gov/v1/FosterCareCase",
+      "@type": "schema:LegalCase"
+    },
+    "placementType": {
+      "@id": "https://schema.acf.hhs.gov/v1/placementType",
+      "@type": "xsd:string"
+    },
+    "removalDate": {
+      "@id": "https://schema.acf.hhs.gov/v1/removalDate",
+      "@type": "xsd:date"
+    },
+    "dischargeDate": {
+      "@id": "https://schema.acf.hhs.gov/v1/dischargeDate",
+      "@type": "xsd:date"
+    },
+
+    "ChildAbuseReport": {
+      "@id": "https://schema.acf.hhs.gov/v1/ChildAbuseReport",
+      "@type": "schema:Report"
+    },
+    "disposition": {
+      "@id": "https://schema.acf.hhs.gov/v1/disposition",
+      "@type": "xsd:string"
+    },
+
+    "TANFCase": {
+      "@id": "https://schema.acf.hhs.gov/v1/TANFCase",
+      "@type": "schema:GovernmentPermit"
+    },
+    "benefitAmount": {
+      "@id": "schema:price",
+      "@type": "xsd:decimal"
+    },
+    "reportMonth": {
+      "@id": "schema:temporalCoverage",
+      "@type": "xsd:string"
+    },
+
+    "Dataset": "schema:Dataset",
+    "AFCARS": {
+      "@id": "https://schema.acf.hhs.gov/v1/AFCARS",
+      "@type": "schema:Dataset"
+    },
+    "NCANDS": {
+      "@id": "https://schema.acf.hhs.gov/v1/NCANDS",
+      "@type": "schema:Dataset"
+    },
+    "NYTD": {
+      "@id": "https://schema.acf.hhs.gov/v1/NYTD",
+      "@type": "schema:Dataset"
+    },
+
+    "created": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:date"
+    },
+    "modified": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:date"
+    }
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "title": "ACF Data Systems Structure",
+  "description": "Documents the key data entities and relationships in ACF's major administrative data systems.",
+  "version": "2026.1",
+  "systems": {
+    "AFCARS": {
+      "name": "Adoption and Foster Care Analysis and Reporting System",
+      "regulation": "45 CFR 1355.40",
+      "reportingFrequency": "Semi-annual",
+      "entities": {
+        "FosterCareChild": {
+          "description": "Child in out-of-home foster care placement",
+          "keyFields": {
+            "stFCID": "string — state foster care case identifier",
+            "childAge": "integer — age in years",
+            "sex": "enum: Male | Female",
+            "racethnicity": "string — race/ethnicity category",
+            "removalDate": "date — date removed from home",
+            "removalManner": "enum: Voluntary | Court-Ordered",
+            "placementType": "string — current placement setting",
+            "caseGoal": "string — permanency goal",
+            "monthsInCare": "integer — duration in foster care",
+            "ICWA": "boolean — Indian Child Welfare Act applicability",
+            "dischargeDate": "date — exit from foster care (if applicable)",
+            "dischargeReason": "string — reason for case closure"
+          }
+        },
+        "AdoptedChild": {
+          "description": "Child with finalized adoption involving Title IV-E",
+          "keyFields": {
+            "adoptionFinalizedDate": "date",
+            "adoptionSubsidy": "boolean — receiving adoption subsidy",
+            "adoptiveParentRelationship": "string — relationship to adoptive family"
+          }
+        }
+      }
+    },
+    "NCANDS": {
+      "name": "National Child Abuse and Neglect Data System",
+      "reportingFrequency": "Annual",
+      "entities": {
+        "ChildFile": {
+          "description": "Case-level data on investigated child maltreatment reports",
+          "keyFields": {
+            "stateAbbr": "string — reporting state",
+            "reportId": "string — report identifier",
+            "reportDate": "date — date report received",
+            "reportSource": "string — type of mandated reporter",
+            "maltreamentType1-5": "enum: Physical Abuse | Neglect | Sexual Abuse | Psychological | Medical Neglect",
+            "disposition": "enum: Substantiated | Indicated | Unsubstantiated | Closed",
+            "childAge": "integer",
+            "childSex": "enum: Male | Female",
+            "perpetratorRelationship": "string",
+            "fosterCareChild": "boolean",
+            "services": "array of strings — services provided post-investigation"
+          }
+        },
+        "AgencyFile": {
+          "description": "Agency-level aggregated reporting data",
+          "keyFields": {
+            "stateAbbr": "string",
+            "reportsReceived": "integer",
+            "reportsInvestigated": "integer",
+            "childVictims": "integer",
+            "childFatalities": "integer"
+          }
+        }
+      }
+    },
+    "NYTD": {
+      "name": "National Youth in Transition Database",
+      "reportingFrequency": "Annual",
+      "entities": {
+        "Youth": {
+          "description": "Youth in foster care tracked for transition outcomes",
+          "keyFields": {
+            "youthId": "string",
+            "age": "integer",
+            "fosterCareStatus": "string",
+            "educationStatus": "string — enrolled in school/training",
+            "employmentStatus": "string — employed/unemployed",
+            "housingStatus": "string — stable/unstable",
+            "connectionToAdults": "boolean",
+            "substanceUse": "boolean",
+            "mentalHealth": "boolean",
+            "pregnancy": "boolean"
+          }
+        }
+      }
+    },
+    "TANF": {
+      "name": "Temporary Assistance for Needy Families",
+      "regulation": "45 CFR 265",
+      "reportingFrequency": "Monthly (sample) + Quarterly (aggregate)",
+      "entities": {
+        "TANFCase": {
+          "description": "TANF household benefit record",
+          "keyFields": {
+            "caseId": "string",
+            "reportMonth": "string YYYY-MM",
+            "state": "string — FIPS code",
+            "county": "string — FIPS code",
+            "familyType": "enum: Married Couple | Unmarried Couple | Single Parent",
+            "numberOfChildren": "integer",
+            "tanfAmount": "decimal — monthly benefit in USD",
+            "monthsOnTanf": "integer — cumulative months (60-month federal limit)",
+            "workParticipation": "boolean",
+            "workActivities": "array of activity codes",
+            "sanction": "boolean"
+          }
+        }
+      }
+    },
+    "CCDF": {
+      "name": "Child Care and Development Fund",
+      "reportingFrequency": "Annual",
+      "entities": {
+        "ChildCareCase": {
+          "description": "Subsidized child care recipient record",
+          "keyFields": {
+            "caseId": "string",
+            "reportMonth": "string YYYY-MM",
+            "state": "string",
+            "childAge": "integer — age in months",
+            "providerType": "string — licensed center, family home, relative",
+            "copayAmount": "decimal — family copay in USD",
+            "subsidyAmount": "decimal — government subsidy in USD"
+          }
+        }
+      }
+    }
+  }
+}

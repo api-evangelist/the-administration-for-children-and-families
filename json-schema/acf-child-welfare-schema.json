@@ -1,0 +1,175 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/api-evangelist/the-administration-for-children-and-families/blob/main/json-schema/acf-child-welfare-schema.json",
+  "title": "ACF Child Welfare Data",
+  "description": "Schema for ACF child welfare data entities derived from AFCARS (Adoption and Foster Care Analysis and Reporting System) and NCANDS (National Child Abuse and Neglect Data System) data definitions.",
+  "type": "object",
+  "definitions": {
+    "FosterCareChild": {
+      "title": "Foster Care Child",
+      "description": "A child in foster care as reported under AFCARS (45 CFR 1355.40).",
+      "type": "object",
+      "properties": {
+        "stFCID": {
+          "type": "string",
+          "description": "State foster care case identifier"
+        },
+        "age": {
+          "type": "integer",
+          "description": "Child's age in years"
+        },
+        "sex": {
+          "type": "string",
+          "enum": ["Male", "Female"],
+          "description": "Child's sex"
+        },
+        "racethnicity": {
+          "type": "string",
+          "description": "Race/ethnicity of the child"
+        },
+        "removal_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of removal from home"
+        },
+        "removal_transaction_type": {
+          "type": "string",
+          "description": "Type of removal transaction"
+        },
+        "removal_manner": {
+          "type": "string",
+          "description": "Manner of removal (voluntary, court-ordered)"
+        },
+        "placement_type": {
+          "type": "string",
+          "description": "Current placement type (foster family home, group home, etc.)"
+        },
+        "case_goal": {
+          "type": "string",
+          "description": "Case goal (reunification, adoption, independent living, etc.)"
+        },
+        "discharge_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Date of discharge from foster care (if applicable)"
+        },
+        "discharge_reason": {
+          "type": "string",
+          "description": "Reason for discharge"
+        },
+        "adoption_finalized": {
+          "type": "boolean",
+          "description": "Whether adoption has been finalized"
+        },
+        "tribal_membership": {
+          "type": "boolean",
+          "description": "Whether child is a member of or eligible for membership in a federally recognized tribe (ICWA relevance)"
+        }
+      },
+      "required": ["stFCID", "age", "sex"]
+    },
+    "ChildAbuseReport": {
+      "title": "Child Abuse and Neglect Report",
+      "description": "A report of child maltreatment as captured by NCANDS.",
+      "type": "object",
+      "properties": {
+        "reportId": {
+          "type": "string",
+          "description": "Unique report identifier"
+        },
+        "reportDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date the report was received"
+        },
+        "reportSource": {
+          "type": "string",
+          "description": "Source of the report (mandatory reporter type)"
+        },
+        "disposition": {
+          "type": "string",
+          "description": "Investigation disposition (substantiated, unsubstantiated, indicated, closed without finding)"
+        },
+        "maltreamentTypes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["Physical Abuse", "Neglect", "Sexual Abuse", "Psychological Maltreatment", "Medical Neglect"]
+          },
+          "description": "Types of maltreatment reported"
+        },
+        "childAge": {
+          "type": "integer",
+          "description": "Age of the child victim"
+        },
+        "childSex": {
+          "type": "string",
+          "enum": ["Male", "Female"]
+        },
+        "childRaceEthnicity": {
+          "type": "string"
+        },
+        "perpetratorRelationship": {
+          "type": "string",
+          "description": "Relationship of perpetrator to the child"
+        },
+        "fosterCareAtTimeOfReport": {
+          "type": "boolean",
+          "description": "Whether child was in foster care at time of report"
+        },
+        "servicesProvided": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Services provided following the investigation"
+        }
+      },
+      "required": ["reportId", "reportDate", "disposition"]
+    },
+    "YouthInTransition": {
+      "title": "Youth in Transition",
+      "description": "Data on youth in or aging out of foster care as collected by NYTD (National Youth in Transition Database).",
+      "type": "object",
+      "properties": {
+        "youthId": {
+          "type": "string",
+          "description": "Unique youth identifier"
+        },
+        "age": {
+          "type": "integer",
+          "description": "Age of the youth"
+        },
+        "fosterCareStatus": {
+          "type": "string",
+          "description": "Current foster care status"
+        },
+        "educationStatus": {
+          "type": "string",
+          "description": "Current educational enrollment status"
+        },
+        "employmentStatus": {
+          "type": "string",
+          "description": "Current employment status"
+        },
+        "housingStatus": {
+          "type": "string",
+          "description": "Current housing situation"
+        },
+        "connectionToAdults": {
+          "type": "boolean",
+          "description": "Whether the youth has supportive connections to caring adults"
+        },
+        "substanceUse": {
+          "type": "boolean",
+          "description": "Whether youth has a substance use problem"
+        },
+        "mentalHealth": {
+          "type": "boolean",
+          "description": "Whether youth has a mental health need"
+        }
+      },
+      "required": ["youthId", "age"]
+    }
+  }
+}

@@ -1,26 +1,59 @@
-# The Administration for Children and Families (the-administration-for-children-and-families)
-The Administration for Children and Families (ACF) is a branch of the U.S. Department of Health and Human Services that is dedicated to promoting the economic and social well-being of children, families, and communities. ACF provides a wide range of services and support programs to help individuals and families achieve self-sufficiency and overall well-being. They administer programs such as Head Start, which provides early childhood education and development services to low-income families, as well as programs to promote healthy marriages and responsible fatherhood. ACF also provides funding and support for child welfare services, childcare programs, and refugee assistance, among many other initiatives aimed at improving the lives of children and families across the country.
+# The Administration for Children and Families
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-search/the-administration-for-children-and-families/refs/heads/main/apis.yml)
+The Administration for Children and Families (ACF) is a division of the U.S. Department of Health and Human Services dedicated to promoting the economic and social well-being of children, families, and communities. ACF administers federal programs including TANF, CCDF (child care), Head Start, LIHEAP (energy assistance), child welfare (Title IV-E), and refugee assistance. ACF collects data through AFCARS, NCANDS, NYTD, and TANF reporting systems and is pursuing FHIR-based interoperability standards for human services.
 
-## Scope
+**Website:** https://www.acf.hhs.gov/
+**Data and Research:** https://acf.gov/acf-data-research
+**GitHub:** https://github.com/HHS
 
-- **Type:** Contract 
-- **Position:** Consumer 
-- **Access:** 3rd-Party 
+## Data Systems and Portals
 
-## Tags:
+| System | Description | URL |
+|--------|-------------|-----|
+| [TANF Data Portal](https://tanfdata.acf.hhs.gov/) | State TANF data submission and reporting | tanfdata.acf.hhs.gov |
+| [NDACAN](https://www.ndacan.acf.hhs.gov/) | National Data Archive on Child Abuse and Neglect (AFCARS, NCANDS, NYTD) | ndacan.acf.hhs.gov |
+| [ACF Data & Research](https://acf.gov/acf-data-research) | ACF data portal with caseload statistics and reports | acf.gov |
+| [data.gov Catalog](https://catalog.data.gov/organization/hhs-acf) | Open datasets published by ACF | catalog.data.gov |
+| [Interoperability Initiative](https://acf.gov/about/interoperability) | FHIR-based human services interoperability | acf.gov |
 
- - Federal Government
+## Artifacts
 
-## Timestamps
+### JSON Schema
 
-- **Created:** 2024-11-20 
-- **Modified:** 2025-01-03 
+- [json-schema/acf-child-welfare-schema.json](json-schema/acf-child-welfare-schema.json) — Schema for AFCARS foster care, NCANDS maltreatment, and NYTD youth in transition data
+- [json-schema/acf-tanf-schema.json](json-schema/acf-tanf-schema.json) — Schema for TANF case and caseload summary data
+
+### JSON Structure
+
+- [json-structure/acf-data-structure.json](json-structure/acf-data-structure.json) — Structure documentation for AFCARS, NCANDS, NYTD, TANF, and CCDF data systems
+
+### JSON-LD Context
+
+- [json-ld/acf-context.jsonld](json-ld/acf-context.jsonld) — Linked data context mapping ACF vocabulary to schema.org, HL7 FHIR, and government ontologies
+
+### Vocabulary
+
+- [vocabulary/acf-vocabulary.yml](vocabulary/acf-vocabulary.yml) — ACF domain vocabulary (16 terms covering programs, data systems, policy, and technology standards)
+
+## Key Programs
+
+- **TANF** — Temporary cash assistance for low-income families (60-month federal limit)
+- **CCDF** — Child care subsidies for low-income working parents
+- **Head Start** — Early childhood education and health for low-income children 0-5
+- **LIHEAP** — Home energy assistance for low-income households
+- **Title IV-E** — Foster care, adoption assistance, and kinship guardianship funding
+- **Child Support** — NDNH database for enforcement and program integrity
+
+## Common Properties
+
+- [Website](https://www.acf.hhs.gov/)
+- [Data and Research](https://acf.gov/acf-data-research)
+- [TANF Data Portal](https://tanfdata.acf.hhs.gov/)
+- [GitHub Organization](https://github.com/HHS)
+- [Data Catalog](https://catalog.data.gov/organization/hhs-acf)
+- [Interoperability](https://acf.gov/about/interoperability)
 
 ## Maintainers
 
 **FN:** Kin Lane
-
-**Email:** info@apievangelist.com
-
+**Email:** kin@apievangelist.com
