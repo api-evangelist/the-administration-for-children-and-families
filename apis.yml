@@ -108,7 +108,7 @@ common:
     url: https://acf.gov/acf-data-research
   - type: Data Portal
     url: https://tanfdata.acf.hhs.gov/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/HHS
   - type: Data Catalog
     url: https://catalog.data.gov/organization/hhs-acf
@@ -118,7 +118,7 @@ common:
     url: json-schema/acf-child-welfare-schema.json
   - type: JSONSchema
     url: json-schema/acf-tanf-schema.json
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/acf-context.jsonld
   - type: Vocabulary
     url: vocabulary/acf-vocabulary.yml
