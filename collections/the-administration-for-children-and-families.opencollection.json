@@ -1,0 +1,775 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TDP API",
+    "version": "v1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "plg_auth_check",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "plg_auth_check_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/plg_auth_check/"
+          },
+          "docs": "Handle get request and verify user is authorized to access plg apps."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "v1",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "v1_auth_check_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/auth_check"
+          },
+          "docs": "Handle get request and verify user is authorized."
+        },
+        {
+          "info": {
+            "name": "v1_change-request-logs_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/change-request-logs/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              }
+            ]
+          },
+          "docs": "ViewSet for change request audit logs."
+        },
+        {
+          "info": {
+            "name": "v1_change-request-logs_read",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/change-request-logs/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "ViewSet for change request audit logs."
+        },
+        {
+          "info": {
+            "name": "v1_change-requests_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/change-requests/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              }
+            ]
+          },
+          "docs": "ViewSet for user change requests."
+        },
+        {
+          "info": {
+            "name": "v1_change-requests_read",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/change-requests/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "ViewSet for user change requests."
+        },
+        {
+          "info": {
+            "name": "v1_data_files_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/data_files/",
+            "params": [
+              {
+                "name": "stt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "quarter",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Override to handle the list request with url param validation."
+        },
+        {
+          "info": {
+            "name": "v1_data_files_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/data_files/"
+          },
+          "docs": "Override create to upload in case of successful scan."
+        },
+        {
+          "info": {
+            "name": "v1_data_files_years_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/data_files/years",
+            "params": [
+              {
+                "name": "stt",
+                "value": "",
+                "type": "path",
+                "description": "The unique identifier of the target STT, if not specified will default to user STT"
+              }
+            ]
+          },
+          "docs": "Handle get action for get list of years there are data_files."
+        },
+        {
+          "info": {
+            "name": "v1_data_files_years_read",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/data_files/years/:stt",
+            "params": [
+              {
+                "name": "stt",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Handle get action for get list of years there are data_files."
+        },
+        {
+          "info": {
+            "name": "v1_data_files_read",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/data_files/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this data file."
+              }
+            ]
+          },
+          "docs": "Data file views."
+        },
+        {
+          "info": {
+            "name": "v1_data_files_download",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/data_files/:id/download/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this data file."
+              }
+            ]
+          },
+          "docs": "Retrieve a file from s3 then stream it to the client."
+        },
+        {
+          "info": {
+            "name": "v1_data_files_download_error_report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/data_files/:id/download_error_report/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this data file."
+              }
+            ]
+          },
+          "docs": "Generate and return the parsing error report xlsx."
+        },
+        {
+          "info": {
+            "name": "v1_feature-flags_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/feature-flags/"
+          },
+          "docs": "Get the feature flag list from the cache if available, else fetch the queryset."
+        },
+        {
+          "info": {
+            "name": "v1_feature-flags_read",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/feature-flags/:feature_name/",
+            "params": [
+              {
+                "name": "feature_name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the feature flag from cache if available, fallback to db."
+        },
+        {
+          "info": {
+            "name": "v1_feedback_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/feedback/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              }
+            ]
+          },
+          "docs": "Feedback viewset."
+        },
+        {
+          "info": {
+            "name": "v1_feedback_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/feedback/"
+          },
+          "docs": "Create feedback with user."
+        },
+        {
+          "info": {
+            "name": "v1_feedback_read",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/feedback/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A UUID string identifying this Feedback."
+              }
+            ]
+          },
+          "docs": "Feedback viewset."
+        },
+        {
+          "info": {
+            "name": "v1_feedback_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/feedback/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A UUID string identifying this Feedback."
+              }
+            ]
+          },
+          "docs": "Update feedback."
+        },
+        {
+          "info": {
+            "name": "v1_feedback_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/feedback/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A UUID string identifying this Feedback."
+              }
+            ]
+          },
+          "docs": "Feedback viewset."
+        },
+        {
+          "info": {
+            "name": "v1_feedback_delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/v1/feedback/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A UUID string identifying this Feedback."
+              }
+            ]
+          },
+          "docs": "Override the destroy method to disallow it."
+        },
+        {
+          "info": {
+            "name": "v1_login_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/login/"
+          },
+          "docs": "Handle decoding auth token and authenticate user."
+        },
+        {
+          "info": {
+            "name": "v1_login_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/login/"
+          },
+          "docs": "Define methods for handling login request from login.gov."
+        },
+        {
+          "info": {
+            "name": "v1_logout_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/logout"
+          },
+          "docs": "Destroy user session."
+        },
+        {
+          "info": {
+            "name": "Pass request bodies to the system logger.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/logs/"
+          },
+          "docs": "Mainly used to log client-side alerts and errors."
+        },
+        {
+          "info": {
+            "name": "v1_oidc_ams_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/oidc/ams"
+          },
+          "docs": "Handle decoding auth token and authenticate user."
+        },
+        {
+          "info": {
+            "name": "v1_oidc_ams_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/oidc/ams"
+          },
+          "docs": "Define methods for handling login request from HHS AMS."
+        },
+        {
+          "info": {
+            "name": "v1_reports_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/reports/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              }
+            ]
+          },
+          "docs": "Report file views."
+        },
+        {
+          "info": {
+            "name": "v1_reports_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/reports/"
+          },
+          "docs": "Report file views."
+        },
+        {
+          "info": {
+            "name": "v1_reports_report-sources_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/reports/report-sources/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              }
+            ]
+          },
+          "docs": "Report source views for batch uploading report files."
+        },
+        {
+          "info": {
+            "name": "v1_reports_report-sources_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/reports/report-sources/"
+          },
+          "docs": "Create a new report source and trigger async processing."
+        },
+        {
+          "info": {
+            "name": "v1_reports_report-sources_read",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/reports/report-sources/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this report source."
+              }
+            ]
+          },
+          "docs": "Report source views for batch uploading report files."
+        },
+        {
+          "info": {
+            "name": "v1_reports_read",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/reports/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this report file."
+              }
+            ]
+          },
+          "docs": "Report file views."
+        },
+        {
+          "info": {
+            "name": "v1_reports_download",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/reports/:id/download/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this report file."
+              }
+            ]
+          },
+          "docs": "Retrieve a file from s3 then stream it to the client."
+        },
+        {
+          "info": {
+            "name": "v1_roles_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/roles/"
+          },
+          "docs": "GET for groups (roles)."
+        },
+        {
+          "info": {
+            "name": "v1_security_event-token_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/v1/security/event-token"
+          },
+          "docs": "Process incoming Security Event Token from Login.gov."
+        },
+        {
+          "info": {
+            "name": "v1_security_get-token_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/security/get-token"
+          },
+          "docs": "Generate new token for the API user."
+        },
+        {
+          "info": {
+            "name": "v1_stts_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/stts/"
+          },
+          "docs": "Simple view to get all STTs."
+        },
+        {
+          "info": {
+            "name": "v1_stts_alpha_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/stts/alpha"
+          },
+          "docs": "Simple view to get all STTs alphabetized."
+        },
+        {
+          "info": {
+            "name": "v1_stts_by_region_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/stts/by_region"
+          },
+          "docs": "Simple view to get all regions and STTs, without pagination."
+        },
+        {
+          "info": {
+            "name": "v1_users_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/users/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              }
+            ]
+          },
+          "docs": "User accounts viewset."
+        },
+        {
+          "info": {
+            "name": "v1_users_profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/users/profile/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              }
+            ]
+          },
+          "docs": "Get the current user's profile."
+        },
+        {
+          "info": {
+            "name": "v1_users_request_access_read",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/users/request_access/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              }
+            ]
+          },
+          "docs": "Update request.user with provided data, set `account_approval_status` to 'Access Request'."
+        },
+        {
+          "info": {
+            "name": "v1_users_request_access_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/users/request_access/"
+          },
+          "docs": "Update request.user with provided data, set `account_approval_status` to 'Access Request'."
+        },
+        {
+          "info": {
+            "name": "v1_users_update_profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/users/update_profile/"
+          },
+          "docs": "Update the current user's profile through change requests."
+        },
+        {
+          "info": {
+            "name": "v1_users_read",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/v1/users/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A UUID string identifying this user."
+              }
+            ]
+          },
+          "docs": "Return a specific user."
+        },
+        {
+          "info": {
+            "name": "v1_users_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/v1/users/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A UUID string identifying this user."
+              }
+            ]
+          },
+          "docs": "User accounts viewset."
+        },
+        {
+          "info": {
+            "name": "v1_users_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/v1/users/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A UUID string identifying this user."
+              }
+            ]
+          },
+          "docs": "User accounts viewset."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
