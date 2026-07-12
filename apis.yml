@@ -102,6 +102,10 @@ apis:
       - type: Dataset
         url: https://catalog.data.gov/organization/hhs-acf
 common:
+  - type: DomainSecurity
+    url: security/the-administration-for-children-and-families-domain-security.yml
+  - type: Authentication
+    url: authentication/the-administration-for-children-and-families-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/administration-for-children-and-families
   - type: Website

@@ -1,0 +1,12 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/the-administration-for-children-and-families-openapi.json
+summary:
+  types:
+  - http
+schemes:
+- name: Basic
+  type: http
+  scheme: basic
+  sources:
+  - openapi/the-administration-for-children-and-families-openapi.json
