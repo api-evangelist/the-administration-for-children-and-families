@@ -102,6 +102,8 @@ apis:
       - type: Dataset
         url: https://catalog.data.gov/organization/hhs-acf
 common:
+  - type: AgenticAccess
+    url: agentic-access/the-administration-for-children-and-families-agentic-access.yml
   - type: DomainSecurity
     url: security/the-administration-for-children-and-families-domain-security.yml
   - type: Authentication
