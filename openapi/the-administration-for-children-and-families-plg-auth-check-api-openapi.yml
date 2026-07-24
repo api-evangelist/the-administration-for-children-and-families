@@ -1,0 +1,34 @@
+swagger: '2.0'
+info:
+  title: TDP plg_auth_check API
+  description: TANF Data Portal API documentation
+  contact:
+    email: tanfdata@acf.hhs.gov
+  version: v1
+host: tanfdata.acf.hhs.gov
+basePath: /
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+security:
+- Basic: []
+tags:
+- name: plg_auth_check
+paths:
+  /plg_auth_check/:
+    parameters: []
+    get:
+      operationId: plg_auth_check_list
+      description: Handle get request and verify user is authorized to access plg apps.
+      parameters: []
+      responses:
+        '200':
+          description: ''
+      tags:
+      - plg_auth_check
+securityDefinitions:
+  Basic:
+    type: basic
