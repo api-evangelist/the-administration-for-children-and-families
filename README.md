@@ -44,12 +44,6 @@ The TANF Data Portal (TDP) is a secure, web-based data reporting system for stat
 - [Postman Collection](collections/the-administration-for-children-and-families.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
 - [Open Collection](collections/the-administration-for-children-and-families.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
-### ACF Human Services Interoperability Initiative
-
-ACF's initiative to develop interoperability standards for human services programs using HL7 FHIR and USCDI+ (United States Core Data for Interoperability Plus). Aims to enable data sharing between social services, health, and other human services systems to support integrated care coordination for children and families.
-
-- **Human URL:** [https://acf.gov/about/interoperability](https://acf.gov/about/interoperability)
-- **Base URL:** `https://acf.gov/`
 
 #### Tags
 

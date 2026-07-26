@@ -13,7 +13,20 @@ description: >-
   human services data exchange. The TANF Data Portal (tanfdata.acf.hhs.gov)
   provides state agencies with a data submission and analysis interface.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+    - plans
+    - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/the-administration-for-children-and-families.png
 tags:
   - Children
   - Families
@@ -24,17 +37,15 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/the-administration-for-children-and-families/refs/heads/main/apis.yml
 created: '2024-11-20T00:00:00.000Z'
-modified: '2026-05-03'
+modified: '2026-07-25'
 specificationVersion: '0.19'
 apis:
   - aid: the-administration-for-children-and-families:tanf-data-portal
     name: TANF Data Portal
     description: >-
-      The TANF Data Portal (TDP) is a secure, web-based data reporting
-      system for state agencies to submit Temporary Assistance for Needy
-      Families (TANF) program data to ACF. It provides data submission
-      workflows, validation, and reporting capabilities. The system is
-      built on a Django/React stack hosted on Cloud.gov.
+      The TANF Data Portal (TDP) is a secure, web-based data reporting system for state agencies to submit
+      Temporary Assistance for Needy Families (TANF) program data to ACF. It provides data submission workflows,
+      validation, and reporting capabilities. The system is built on a Django/React stack hosted on Cloud.gov.
     humanURL: https://tanfdata.acf.hhs.gov/
     baseURL: https://tanfdata.acf.hhs.gov/
     tags:
@@ -46,32 +57,13 @@ apis:
         url: https://tanfdata.acf.hhs.gov/
       - type: GitHubRepository
         url: https://github.com/HHS/TANF-app
-  - aid: the-administration-for-children-and-families:acf-interoperability
-    name: ACF Human Services Interoperability Initiative
-    description: >-
-      ACF's initiative to develop interoperability standards for human
-      services programs using HL7 FHIR and USCDI+ (United States Core
-      Data for Interoperability Plus). Aims to enable data sharing
-      between social services, health, and other human services systems
-      to support integrated care coordination for children and families.
-    humanURL: https://acf.gov/about/interoperability
-    baseURL: https://acf.gov/
-    tags:
-      - FHIR
-      - Federal Government
-      - Human Services
-      - Interoperability
-    properties:
-      - type: Documentation
-        url: https://acf.gov/about/interoperability
   - aid: the-administration-for-children-and-families:ndacan
     name: National Data Archive on Child Abuse and Neglect
     description: >-
-      NDACAN is the central repository for datasets related to child abuse,
-      neglect, and child welfare at Cornell University, funded by ACF.
-      Provides access to AFCARS (foster care/adoption), NCANDS (child abuse
-      and neglect), and NYTD (youth in transition) datasets for research
-      purposes. Includes data codebooks and user guides.
+      NDACAN is the central repository for datasets related to child abuse, neglect, and child welfare at
+      Cornell University, funded by ACF. Provides access to AFCARS (foster care/adoption), NCANDS (child
+      abuse and neglect), and NYTD (youth in transition) datasets for research purposes. Includes data codebooks
+      and user guides.
     humanURL: https://www.ndacan.acf.hhs.gov/
     baseURL: https://www.ndacan.acf.hhs.gov/
     tags:
@@ -85,9 +77,8 @@ apis:
   - aid: the-administration-for-children-and-families:acf-data-research
     name: ACF Data and Research Portal
     description: >-
-      ACF's primary data and research portal providing access to program
-      data, statistical reports, and research findings across all ACF
-      program offices. Includes TANF caseload data, CCDF data, Head Start
+      ACF's primary data and research portal providing access to program data, statistical reports, and
+      research findings across all ACF program offices. Includes TANF caseload data, CCDF data, Head Start
       program data, and child welfare statistics.
     humanURL: https://acf.gov/acf-data-research
     baseURL: https://acf.gov/
@@ -101,6 +92,29 @@ apis:
         url: https://acf.gov/acf-data-research
       - type: Dataset
         url: https://catalog.data.gov/organization/hhs-acf
+  - aid: >-
+      the-administration-for-children-and-families:the-administration-for-children-and-families-plg-auth-check-api
+    name: The Administration for Children and Families plg_auth_check API
+    description: >-
+      The plg_auth_check API from The Administration for Children and Families — 1 operation(s) for plg_auth_check.
+    humanURL: https://tanfdata.acf.hhs.gov/
+    baseURL: https://tanfdata.acf.hhs.gov/
+    tags:
+      - plg_auth_check
+    properties:
+      - type: OpenAPI
+        url: openapi/the-administration-for-children-and-families-plg-auth-check-api-openapi.yml
+  - aid: >-
+      the-administration-for-children-and-families:the-administration-for-children-and-families-v1-api
+    name: The Administration for Children and Families v1 API
+    description: The v1 API from The Administration for Children and Families — 35 operation(s) for v1.
+    humanURL: https://tanfdata.acf.hhs.gov/
+    baseURL: https://tanfdata.acf.hhs.gov/
+    tags:
+      - v1
+    properties:
+      - type: OpenAPI
+        url: openapi/the-administration-for-children-and-families-v1-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/the-administration-for-children-and-families-agentic-access.yml
