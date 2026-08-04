@@ -1,0 +1,16 @@
+{
+  "provider": "the-administration-for-children-and-families",
+  "sources": [
+    "the-administration-for-children-and-families-plg-auth-check-api-openapi.yml",
+    "the-administration-for-children-and-families-v1-api-openapi.yml"
+  ],
+  "outputs": [
+    "the-administration-for-children-and-families-plg-auth-check-api-openapi.yml",
+    "the-administration-for-children-and-families-v1-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
