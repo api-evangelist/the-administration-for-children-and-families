@@ -1,0 +1,114 @@
+{
+  "item": [
+    {
+      "id": "d6868e17-b749-4c9c-b0a4-66f7fac72e9d",
+      "name": "plg_auth_check",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "38d40242-882d-43e0-a897-e5f13793f7ef",
+          "name": "plg auth check list",
+          "request": {
+            "name": "plg auth check list",
+            "description": {
+              "content": "Handle get request and verify user is authorized to access plg apps.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "plg_auth_check",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "12216dd6-804a-4c7f-8985-a66e4b08e3e5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "plg_auth_check",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://tanfdata.acf.hhs.gov",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a3b240b1-d5cd-413c-b84a-f8d31c62f913",
+    "name": "TDP plg_auth_check API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "TANF Data Portal API documentation\n\nContact Support:\n Email: tanfdata@acf.hhs.gov",
+      "type": "text/plain"
+    }
+  }
+}
