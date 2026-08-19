@@ -38,7 +38,7 @@ url: >-
   https://raw.githubusercontent.com/api-evangelist/the-administration-for-children-and-families/refs/heads/main/apis.yml
 created: '2024-11-20T00:00:00.000Z'
 modified: '2026-07-25'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
   - aid: the-administration-for-children-and-families:tanf-data-portal
     name: TANF Data Portal
