@@ -30,6 +30,13 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/the-admini
 tags:
   - Children
   - Families
+  - Federal-Government
+  - Health And Human Services
+  - Human Services
+  - Social Safety Net
+tags_raw:
+  - Children
+  - Families
   - Federal Government
   - Health And Human Services
   - Human Services
@@ -49,6 +56,10 @@ apis:
     humanURL: https://tanfdata.acf.hhs.gov/
     baseURL: https://tanfdata.acf.hhs.gov/
     tags:
+      - Federal-Government
+      - Human Services
+      - TANF
+    tags_raw:
       - Federal Government
       - Human Services
       - TANF
@@ -69,6 +80,11 @@ apis:
     tags:
       - Child Welfare
       - Data Archive
+      - Federal-Government
+      - Research
+    tags_raw:
+      - Child Welfare
+      - Data Archive
       - Federal Government
       - Research
     properties:
@@ -83,6 +99,11 @@ apis:
     humanURL: https://acf.gov/acf-data-research
     baseURL: https://acf.gov/
     tags:
+      - Data
+      - Federal-Government
+      - Research
+      - Statistics
+    tags_raw:
       - Data
       - Federal Government
       - Research
@@ -99,7 +120,8 @@ apis:
       The plg_auth_check API from The Administration for Children and Families — 1 operation(s) for plg_auth_check.
     humanURL: https://tanfdata.acf.hhs.gov/
     baseURL: https://tanfdata.acf.hhs.gov/
-    tags:
+    tags: []
+    tags_raw:
       - plg_auth_check
     properties:
       - type: OpenAPI
