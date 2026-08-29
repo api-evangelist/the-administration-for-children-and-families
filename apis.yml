@@ -13,6 +13,18 @@ description: >-
   human services data exchange. The TANF Data Portal (tanfdata.acf.hhs.gov)
   provides state agencies with a data submission and analysis interface.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: false
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -138,6 +150,14 @@ apis:
       - type: OpenAPI
         url: openapi/the-administration-for-children-and-families-v1-api-openapi.yml
 common:
+  - type: IssueTracker
+    url: https://github.com/HHS/TANF-app/issues
+  - type: SecurityPolicy
+    url: https://github.com/HHS/TANF-app/blob/main/SECURITY.md
+  - type: CodeOfConduct
+    url: https://github.com/HHS/TANF-app/blob/main/CODE_OF_CONDUCT.md
+  - type: ContributionGuide
+    url: https://github.com/HHS/TANF-app/blob/main/CONTRIBUTING.md
   - type: AgenticAccess
     url: agentic-access/the-administration-for-children-and-families-agentic-access.yml
   - type: DomainSecurity
