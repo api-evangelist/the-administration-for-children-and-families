@@ -134,7 +134,7 @@ apis:
     baseURL: https://tanfdata.acf.hhs.gov/
     tags: []
     tags_raw:
-      - plg_auth_check
+    - plg_auth_check
     properties:
       - type: OpenAPI
         url: openapi/the-administration-for-children-and-families-plg-auth-check-api-openapi.yml
