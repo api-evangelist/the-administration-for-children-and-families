@@ -1,8 +1,7 @@
 {
   "provider": "the-administration-for-children-and-families",
   "sources": [
-    "the-administration-for-children-and-families-plg-auth-check-api-openapi.yml",
-    "the-administration-for-children-and-families-v1-api-openapi.yml"
+    "_original/the-administration-for-children-and-families-openapi.json"
   ],
   "outputs": [
     "the-administration-for-children-and-families-plg-auth-check-api-openapi.yml",
@@ -11,6 +10,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "the-administration-for-children-and-families-openapi.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "the-administration-for-children-and-families-openapi.json: declared missing tag: plg_auth_check",
+    "the-administration-for-children-and-families-openapi.json: declared missing tag: v1",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "the-administration-for-children-and-families-plg-auth-check-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "the-administration-for-children-and-families-v1-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
