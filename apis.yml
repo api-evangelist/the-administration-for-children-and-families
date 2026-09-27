@@ -15,6 +15,9 @@ description: >-
 type: Index
 deliveryModel:
   model: unknown
+  license_evidence:
+    not_product:
+    - hhs/tanf-app
   open_source: unknown
   commercial: false
   callable_host: true
@@ -22,8 +25,8 @@ deliveryModel:
   confidence: low
   source:
   - openapi
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -44,7 +47,7 @@ image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/the-admini
 tags:
   - Children
   - Families
-  - Federal-Government
+  - Federal Government
   - Health And Human Services
   - Human Services
   - Social Safety Net
@@ -55,102 +58,278 @@ tags_raw:
   - Health And Human Services
   - Human Services
   - Social Safety Net
+  - Federal-Government
 url: >-
   https://raw.githubusercontent.com/api-evangelist/the-administration-for-children-and-families/refs/heads/main/apis.yml
 created: '2024-11-20T00:00:00.000Z'
 modified: '2026-07-25'
 specificationVersion: '0.23'
 apis:
-  - aid: the-administration-for-children-and-families:tanf-data-portal
-    name: TANF Data Portal
-    description: >-
-      The TANF Data Portal (TDP) is a secure, web-based data reporting system for state agencies to submit
-      Temporary Assistance for Needy Families (TANF) program data to ACF. It provides data submission workflows,
-      validation, and reporting capabilities. The system is built on a Django/React stack hosted on Cloud.gov.
-    humanURL: https://tanfdata.acf.hhs.gov/
-    baseURL: https://tanfdata.acf.hhs.gov/
-    tags:
-      - Federal-Government
-      - Human Services
-      - TANF
-    tags_raw:
-      - Federal Government
-      - Human Services
-      - TANF
-    properties:
-      - type: Documentation
-        url: https://tanfdata.acf.hhs.gov/
-      - type: GitHubRepository
-        url: https://github.com/HHS/TANF-app
-  - aid: the-administration-for-children-and-families:ndacan
-    name: National Data Archive on Child Abuse and Neglect
-    description: >-
-      NDACAN is the central repository for datasets related to child abuse, neglect, and child welfare at
-      Cornell University, funded by ACF. Provides access to AFCARS (foster care/adoption), NCANDS (child
-      abuse and neglect), and NYTD (youth in transition) datasets for research purposes. Includes data codebooks
-      and user guides.
-    humanURL: https://www.ndacan.acf.hhs.gov/
-    baseURL: https://www.ndacan.acf.hhs.gov/
-    tags:
-      - Child Welfare
-      - Data Archive
-      - Federal-Government
-      - Research
-    tags_raw:
-      - Child Welfare
-      - Data Archive
-      - Federal Government
-      - Research
-    properties:
-      - type: Documentation
-        url: https://www.ndacan.acf.hhs.gov/
-  - aid: the-administration-for-children-and-families:acf-data-research
-    name: ACF Data and Research Portal
-    description: >-
-      ACF's primary data and research portal providing access to program data, statistical reports, and
-      research findings across all ACF program offices. Includes TANF caseload data, CCDF data, Head Start
-      program data, and child welfare statistics.
-    humanURL: https://acf.gov/acf-data-research
-    baseURL: https://acf.gov/
-    tags:
-      - Data
-      - Federal-Government
-      - Research
-      - Statistics
-    tags_raw:
-      - Data
-      - Federal Government
-      - Research
-      - Statistics
-    properties:
-      - type: Documentation
-        url: https://acf.gov/acf-data-research
-      - type: Dataset
-        url: https://catalog.data.gov/organization/hhs-acf
-  - aid: >-
-      the-administration-for-children-and-families:the-administration-for-children-and-families-plg-auth-check-api
-    name: The Administration for Children and Families plg_auth_check API
-    description: >-
-      The plg_auth_check API from The Administration for Children and Families — 1 operation(s) for plg_auth_check.
-    humanURL: https://tanfdata.acf.hhs.gov/
-    baseURL: https://tanfdata.acf.hhs.gov/
-    tags: []
-    tags_raw:
-    - plg_auth_check
-    properties:
-      - type: OpenAPI
-        url: openapi/the-administration-for-children-and-families-plg-auth-check-api-openapi.yml
-  - aid: >-
-      the-administration-for-children-and-families:the-administration-for-children-and-families-v1-api
-    name: The Administration for Children and Families v1 API
-    description: The v1 API from The Administration for Children and Families — 35 operation(s) for v1.
-    humanURL: https://tanfdata.acf.hhs.gov/
-    baseURL: https://tanfdata.acf.hhs.gov/
-    tags:
-      - v1
-    properties:
-      - type: OpenAPI
-        url: openapi/the-administration-for-children-and-families-v1-api-openapi.yml
+- aid: the-administration-for-children-and-families:tanf-data-portal
+  name: TANF Data Portal
+  description: >-
+    The TANF Data Portal (TDP) is a secure, web-based data reporting system for state agencies to submit
+    Temporary Assistance for Needy Families (TANF) program data to ACF. It provides data submission workflows,
+    validation, and reporting capabilities. The system is built on a Django/React stack hosted on Cloud.gov.
+  humanURL: https://tanfdata.acf.hhs.gov/
+  baseURL: https://tanfdata.acf.hhs.gov/
+  tags:
+  - Federal Government
+  - Human Services
+  - TANF
+  tags_raw:
+  - Federal Government
+  - Human Services
+  - TANF
+  - Federal-Government
+  properties:
+  - type: Documentation
+    url: https://tanfdata.acf.hhs.gov/
+  - type: GitHubRepository
+    url: https://github.com/HHS/TANF-app
+- aid: the-administration-for-children-and-families:ndacan
+  name: National Data Archive on Child Abuse and Neglect
+  description: >-
+    NDACAN is the central repository for datasets related to child abuse, neglect, and child welfare at
+    Cornell University, funded by ACF. Provides access to AFCARS (foster care/adoption), NCANDS (child
+    abuse and neglect), and NYTD (youth in transition) datasets for research purposes. Includes data codebooks
+    and user guides.
+  humanURL: https://www.ndacan.acf.hhs.gov/
+  baseURL: https://www.ndacan.acf.hhs.gov/
+  tags:
+  - Child Welfare
+  - Data Archive
+  - Federal Government
+  - Research
+  tags_raw:
+  - Child Welfare
+  - Data Archive
+  - Federal Government
+  - Research
+  - Federal-Government
+  properties:
+  - type: Documentation
+    url: https://www.ndacan.acf.hhs.gov/
+- aid: the-administration-for-children-and-families:acf-data-research
+  name: ACF Data and Research Portal
+  description: >-
+    ACF's primary data and research portal providing access to program data, statistical reports, and
+    research findings across all ACF program offices. Includes TANF caseload data, CCDF data, Head Start
+    program data, and child welfare statistics.
+  humanURL: https://acf.gov/acf-data-research
+  baseURL: https://acf.gov/
+  tags:
+  - Data
+  - Federal Government
+  - Research
+  - Statistics
+  tags_raw:
+  - Data
+  - Federal Government
+  - Research
+  - Statistics
+  - Federal-Government
+  properties:
+  - type: Documentation
+    url: https://acf.gov/acf-data-research
+  - type: Dataset
+    url: https://catalog.data.gov/organization/hhs-acf
+- aid: >-
+    the-administration-for-children-and-families:the-administration-for-children-and-families-plg-auth-check-api
+  name: The Administration for Children and Families Plg Auth Check API
+  description: >-
+    The plg_auth_check API from The Administration for Children and Families — 1 operation(s) for plg_auth_check.
+  humanURL: https://tanfdata.acf.hhs.gov/
+  baseURL: https://tanfdata.acf.hhs.gov/
+  tags: []
+  tags_raw:
+  - plg_auth_check
+  properties:
+  - type: OpenAPI
+    url: openapi/the-administration-for-children-and-families-plg-auth-check-api-openapi.yml
+- aid: >-
+    the-administration-for-children-and-families:the-administration-for-children-and-families-auth-check-api
+  name: The Administration for Children and Families Auth Check API
+  description: >-
+    The Auth Check API from The Administration for Children and Families — 1 operation(s) for auth check.
+  humanURL: https://tanfdata.acf.hhs.gov/
+  baseURL: https://tanfdata.acf.hhs.gov/
+  tags:
+  - Auth Check
+  properties:
+  - type: OpenAPI
+    url: openapi/the-administration-for-children-and-families-auth-check-api-openapi.yml
+- aid: >-
+    the-administration-for-children-and-families:the-administration-for-children-and-families-change-request-logs-api
+  name: The Administration for Children and Families Change Request Logs API
+  description: >-
+    The Change Request Logs API from The Administration for Children and Families — 2 operation(s) for
+    change request logs.
+  humanURL: https://tanfdata.acf.hhs.gov/
+  baseURL: https://tanfdata.acf.hhs.gov/
+  tags:
+  - Change Request Logs
+  properties:
+  - type: OpenAPI
+    url: openapi/the-administration-for-children-and-families-change-request-logs-api-openapi.yml
+- aid: >-
+    the-administration-for-children-and-families:the-administration-for-children-and-families-change-requests-api
+  name: The Administration for Children and Families Change Requests API
+  description: >-
+    The Change Requests API from The Administration for Children and Families — 2 operation(s) for change
+    requests.
+  humanURL: https://tanfdata.acf.hhs.gov/
+  baseURL: https://tanfdata.acf.hhs.gov/
+  tags:
+  - Change Requests
+  properties:
+  - type: OpenAPI
+    url: openapi/the-administration-for-children-and-families-change-requests-api-openapi.yml
+- aid: >-
+    the-administration-for-children-and-families:the-administration-for-children-and-families-data-files-api
+  name: The Administration for Children and Families Data Files API
+  description: >-
+    The Data Files API from The Administration for Children and Families — 6 operation(s) for data files.
+  humanURL: https://tanfdata.acf.hhs.gov/
+  baseURL: https://tanfdata.acf.hhs.gov/
+  tags:
+  - Data Files
+  properties:
+  - type: OpenAPI
+    url: openapi/the-administration-for-children-and-families-data-files-api-openapi.yml
+- aid: >-
+    the-administration-for-children-and-families:the-administration-for-children-and-families-feature-flags-api
+  name: The Administration for Children and Families Feature Flags API
+  description: >-
+    The Feature Flags API from The Administration for Children and Families — 2 operation(s) for feature
+    flags.
+  humanURL: https://tanfdata.acf.hhs.gov/
+  baseURL: https://tanfdata.acf.hhs.gov/
+  tags:
+  - Feature Flags
+  properties:
+  - type: OpenAPI
+    url: openapi/the-administration-for-children-and-families-feature-flags-api-openapi.yml
+- aid: >-
+    the-administration-for-children-and-families:the-administration-for-children-and-families-feedback-api
+  name: The Administration for Children and Families Feedback API
+  description: >-
+    The Feedback API from The Administration for Children and Families — 2 operation(s) for feedback.
+  humanURL: https://tanfdata.acf.hhs.gov/
+  baseURL: https://tanfdata.acf.hhs.gov/
+  tags:
+  - Feedback
+  properties:
+  - type: OpenAPI
+    url: openapi/the-administration-for-children-and-families-feedback-api-openapi.yml
+- aid: >-
+    the-administration-for-children-and-families:the-administration-for-children-and-families-login-api
+  name: The Administration for Children and Families Login API
+  description: >-
+    The Login API from The Administration for Children and Families — 1 operation(s) for login.
+  humanURL: https://tanfdata.acf.hhs.gov/
+  baseURL: https://tanfdata.acf.hhs.gov/
+  tags:
+  - Login
+  properties:
+  - type: OpenAPI
+    url: openapi/the-administration-for-children-and-families-login-api-openapi.yml
+- aid: >-
+    the-administration-for-children-and-families:the-administration-for-children-and-families-logout-api
+  name: The Administration for Children and Families Logout API
+  description: >-
+    The Logout API from The Administration for Children and Families — 1 operation(s) for logout.
+  humanURL: https://tanfdata.acf.hhs.gov/
+  baseURL: https://tanfdata.acf.hhs.gov/
+  tags:
+  - Logout
+  properties:
+  - type: OpenAPI
+    url: openapi/the-administration-for-children-and-families-logout-api-openapi.yml
+- aid: >-
+    the-administration-for-children-and-families:the-administration-for-children-and-families-logs-api
+  name: The Administration for Children and Families Logs API
+  description: >-
+    The Logs API from The Administration for Children and Families — 1 operation(s) for logs.
+  humanURL: https://tanfdata.acf.hhs.gov/
+  baseURL: https://tanfdata.acf.hhs.gov/
+  tags:
+  - Logs
+  properties:
+  - type: OpenAPI
+    url: openapi/the-administration-for-children-and-families-logs-api-openapi.yml
+- aid: >-
+    the-administration-for-children-and-families:the-administration-for-children-and-families-oidc-api
+  name: The Administration for Children and Families Oidc API
+  description: >-
+    The Oidc API from The Administration for Children and Families — 1 operation(s) for oidc.
+  humanURL: https://tanfdata.acf.hhs.gov/
+  baseURL: https://tanfdata.acf.hhs.gov/
+  tags:
+  - Oidc
+  properties:
+  - type: OpenAPI
+    url: openapi/the-administration-for-children-and-families-oidc-api-openapi.yml
+- aid: >-
+    the-administration-for-children-and-families:the-administration-for-children-and-families-reports-api
+  name: The Administration for Children and Families Reports API
+  description: >-
+    The Reports API from The Administration for Children and Families — 5 operation(s) for reports.
+  humanURL: https://tanfdata.acf.hhs.gov/
+  baseURL: https://tanfdata.acf.hhs.gov/
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/the-administration-for-children-and-families-reports-api-openapi.yml
+- aid: >-
+    the-administration-for-children-and-families:the-administration-for-children-and-families-roles-api
+  name: The Administration for Children and Families Roles API
+  description: >-
+    The Roles API from The Administration for Children and Families — 1 operation(s) for roles.
+  humanURL: https://tanfdata.acf.hhs.gov/
+  baseURL: https://tanfdata.acf.hhs.gov/
+  tags:
+  - Roles
+  properties:
+  - type: OpenAPI
+    url: openapi/the-administration-for-children-and-families-roles-api-openapi.yml
+- aid: >-
+    the-administration-for-children-and-families:the-administration-for-children-and-families-security-api
+  name: The Administration for Children and Families Security API
+  description: >-
+    The Security API from The Administration for Children and Families — 2 operation(s) for security.
+  humanURL: https://tanfdata.acf.hhs.gov/
+  baseURL: https://tanfdata.acf.hhs.gov/
+  tags:
+  - Security
+  properties:
+  - type: OpenAPI
+    url: openapi/the-administration-for-children-and-families-security-api-openapi.yml
+- aid: >-
+    the-administration-for-children-and-families:the-administration-for-children-and-families-stts-api
+  name: The Administration for Children and Families Stts API
+  description: >-
+    The Stts API from The Administration for Children and Families — 3 operation(s) for stts.
+  humanURL: https://tanfdata.acf.hhs.gov/
+  baseURL: https://tanfdata.acf.hhs.gov/
+  tags:
+  - Stts
+  properties:
+  - type: OpenAPI
+    url: openapi/the-administration-for-children-and-families-stts-api-openapi.yml
+- aid: >-
+    the-administration-for-children-and-families:the-administration-for-children-and-families-users-api
+  name: The Administration for Children and Families Users API
+  description: >-
+    The Users API from The Administration for Children and Families — 5 operation(s) for users.
+  humanURL: https://tanfdata.acf.hhs.gov/
+  baseURL: https://tanfdata.acf.hhs.gov/
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/the-administration-for-children-and-families-users-api-openapi.yml
 common:
   - type: IssueTracker
     url: https://github.com/HHS/TANF-app/issues
@@ -191,3 +370,4 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-parent: hhs

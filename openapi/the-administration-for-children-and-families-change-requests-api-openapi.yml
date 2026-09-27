@@ -1,0 +1,125 @@
+openapi: 3.2.0
+info:
+  title: TDP Change Requests API
+  description: TANF Data Portal API documentation
+  contact:
+    email: tanfdata@acf.hhs.gov
+  version: v1
+servers:
+- url: https://tanfdata.acf.hhs.gov/
+security:
+- Basic: []
+tags:
+- name: Change Requests
+paths:
+  /v1/change-requests/:
+    parameters: []
+    get:
+      operationId: v1_change-requests_list
+      description: ViewSet for user change requests.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                required:
+                - count
+                - results
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  next:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                  previous:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UserChangeRequest'
+      tags:
+      - Change Requests
+      summary: V1 change requests list
+      x-summary-source: derived
+  /v1/change-requests/{id}/:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: v1_change-requests_read
+      description: ViewSet for user change requests.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserChangeRequest'
+      tags:
+      - Change Requests
+      summary: V1 change requests read
+      x-summary-source: derived
+components:
+  schemas:
+    UserChangeRequest:
+      required:
+      - user
+      - field_name
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          format: uuid
+          readOnly: true
+        user:
+          title: User
+          type: string
+          format: uuid
+        field_name:
+          title: Field name
+          description: 'The name of the field being changed, possible values include: first_name, last_name, regions and has_fra_access'
+          type: string
+          maxLength: 100
+          minLength: 1
+        requested_value:
+          title: Requested value
+          description: The requested new value for the field
+          type: string
+        status:
+          title: Status
+          description: The current status of this change request
+          type: string
+          enum:
+          - pending
+          - approved
+          - rejected
+          - cancelled
+          readOnly: true
+        requested_at:
+          title: Requested at
+          description: When this change was requested
+          type: string
+          format: date-time
+          readOnly: true
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic

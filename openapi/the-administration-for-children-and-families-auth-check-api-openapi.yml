@@ -1,0 +1,31 @@
+openapi: 3.2.0
+info:
+  title: TDP Auth Check API
+  description: TANF Data Portal API documentation
+  contact:
+    email: tanfdata@acf.hhs.gov
+  version: v1
+servers:
+- url: https://tanfdata.acf.hhs.gov/
+security:
+- Basic: []
+tags:
+- name: Auth Check
+paths:
+  /v1/auth_check:
+    parameters: []
+    get:
+      operationId: v1_auth_check_list
+      description: Handle get request and verify user is authorized.
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Auth Check
+      summary: V1 auth check list
+      x-summary-source: derived
+components:
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic

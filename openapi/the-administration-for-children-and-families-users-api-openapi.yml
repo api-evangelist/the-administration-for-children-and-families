@@ -1,0 +1,659 @@
+openapi: 3.2.0
+info:
+  title: TDP Users API
+  description: TANF Data Portal API documentation
+  contact:
+    email: tanfdata@acf.hhs.gov
+  version: v1
+servers:
+- url: https://tanfdata.acf.hhs.gov/
+security:
+- Basic: []
+tags:
+- name: Users
+paths:
+  /v1/users/:
+    parameters: []
+    get:
+      operationId: v1_users_list
+      description: User accounts viewset.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                required:
+                - count
+                - results
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  next:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                  previous:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+      tags:
+      - Users
+      summary: V1 users list
+      x-summary-source: derived
+  /v1/users/profile/:
+    parameters: []
+    get:
+      operationId: v1_users_profile
+      description: Get the current user's profile.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                required:
+                - count
+                - results
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  next:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                  previous:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UserProfile'
+      tags:
+      - Users
+      summary: V1 users profile
+      x-summary-source: derived
+  /v1/users/request_access/:
+    parameters: []
+    get:
+      operationId: v1_users_request_access_read
+      description: Update request.user with provided data, set `account_approval_status` to 'Access Request'.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                required:
+                - count
+                - results
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  next:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                  previous:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/UserProfile'
+      tags:
+      - Users
+      summary: V1 users request access read
+      x-summary-source: derived
+    patch:
+      operationId: v1_users_request_access_partial_update
+      description: Update request.user with provided data, set `account_approval_status` to 'Access Request'.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+      tags:
+      - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserProfile'
+        required: true
+      summary: V1 users request access partial update
+      x-summary-source: derived
+  /v1/users/update_profile/:
+    parameters: []
+    patch:
+      operationId: v1_users_update_profile
+      description: Update the current user's profile through change requests.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfileChangeRequest'
+      tags:
+      - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserProfileChangeRequest'
+        required: true
+      summary: V1 users update profile
+      x-summary-source: derived
+  /v1/users/{id}/:
+    parameters:
+    - name: id
+      in: path
+      description: A UUID string identifying this user.
+      required: true
+      schema:
+        type: string
+        format: uuid
+    get:
+      operationId: v1_users_read
+      description: Return a specific user.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      tags:
+      - Users
+      summary: V1 users read
+      x-summary-source: derived
+    put:
+      operationId: v1_users_update
+      description: User accounts viewset.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      tags:
+      - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      summary: V1 users update
+      x-summary-source: derived
+    patch:
+      operationId: v1_users_partial_update
+      description: User accounts viewset.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+      tags:
+      - Users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      summary: V1 users partial update
+      x-summary-source: derived
+components:
+  schemas:
+    UserProfile:
+      required:
+      - first_name
+      - last_name
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          format: uuid
+          readOnly: true
+        first_name:
+          title: First name
+          type: string
+          maxLength: 150
+          minLength: 1
+        last_name:
+          title: Last name
+          type: string
+          maxLength: 150
+          minLength: 1
+        email:
+          title: Email
+          type: string
+          readOnly: true
+          minLength: 1
+        stt:
+          title: Stt
+          type:
+          - integer
+          - 'null'
+        regions:
+          type: array
+          items:
+            type: integer
+          uniqueItems: true
+        login_gov_uuid:
+          title: Login gov uuid
+          type:
+          - string
+          - 'null'
+          format: uuid
+          readOnly: true
+        hhs_id:
+          title: Hhs id
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          minLength: 1
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+          readOnly: true
+        groups:
+          description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
+          type: array
+          items:
+            description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
+            type: string
+            format: uuid
+          readOnly: true
+          uniqueItems: true
+        is_superuser:
+          title: Superuser status
+          description: Designates that this user has all permissions without explicitly assigning them.
+          type: boolean
+          readOnly: true
+        is_staff:
+          title: Staff status
+          description: Designates whether the user can log into this admin site.
+          type: boolean
+          readOnly: true
+        last_login:
+          title: Last login
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        date_joined:
+          title: Date joined
+          type: string
+          format: date-time
+          readOnly: true
+        access_requested_date:
+          title: Access requested date
+          type: string
+          format: date-time
+          readOnly: true
+        account_approval_status:
+          title: Account approval status
+          description: Designates whether this user account is active and approved to access TDP. Users in an approved state are allowed access.
+          type: string
+          enum:
+          - Initial
+          - Access request
+          - Pending
+          - Approved
+          - Denied
+          - Deactivated
+          readOnly: true
+        feature_flags:
+          title: Feature flags
+          description: 'Feature flags for this user. This is a JSON field that can be used to store key-value pairs. E.g: {"some_feature": true}'
+          type: object
+          readOnly: true
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Permission'
+          readOnly: true
+        pending_requests:
+          title: Pending requests
+          type: string
+          readOnly: true
+    Permission:
+      required:
+      - codename
+      - name
+      type: object
+      properties:
+        id:
+          title: ID
+          type: integer
+          readOnly: true
+        codename:
+          title: Codename
+          type: string
+          maxLength: 100
+          minLength: 1
+        name:
+          title: Name
+          type: string
+          maxLength: 255
+          minLength: 1
+        content_type:
+          title: Content type
+          type:
+          - string
+          - 'null'
+          minLength: 1
+    User:
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          format: uuid
+          readOnly: true
+        username:
+          title: Username
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
+          type: string
+          readOnly: true
+          minLength: 1
+        first_name:
+          title: First name
+          type: string
+          maxLength: 150
+        last_name:
+          title: Last name
+          type: string
+          maxLength: 150
+        account_approval_status:
+          title: Account approval status
+          description: Designates whether this user account is active and approved to access TDP. Users in an approved state are allowed access.
+          type: string
+          enum:
+          - Initial
+          - Access request
+          - Pending
+          - Approved
+          - Denied
+          - Deactivated
+          readOnly: true
+        groups:
+          description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
+          type: array
+          items:
+            description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
+            type: string
+            format: uuid
+          readOnly: true
+          uniqueItems: true
+        is_superuser:
+          title: Superuser status
+          description: Designates that this user has all permissions without explicitly assigning them.
+          type: boolean
+          readOnly: true
+        is_staff:
+          title: Staff status
+          description: Designates whether the user can log into this admin site.
+          type: boolean
+          readOnly: true
+        stt:
+          title: Stt
+          type:
+          - integer
+          - 'null'
+        regions:
+          description: Regions this user is associated with.
+          type: array
+          items:
+            description: Regions this user is associated with.
+            type: string
+            format: uuid
+          readOnly: true
+          uniqueItems: true
+        login_gov_uuid:
+          title: Login gov uuid
+          type:
+          - string
+          - 'null'
+          format: uuid
+          readOnly: true
+        hhs_id:
+          title: Hhs id
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          minLength: 1
+        last_login:
+          title: Last login
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        date_joined:
+          title: Date joined
+          type: string
+          format: date-time
+          readOnly: true
+        access_requested_date:
+          title: Access requested date
+          type: string
+          format: date-time
+          readOnly: true
+        feature_flags:
+          title: Feature flags
+          description: 'Feature flags for this user. This is a JSON field that can be used to store key-value pairs. E.g: {"some_feature": true}'
+          type: object
+    UserProfileChangeRequest:
+      required:
+      - first_name
+      - last_name
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          format: uuid
+          readOnly: true
+        first_name:
+          title: First name
+          type: string
+          maxLength: 150
+          minLength: 1
+        last_name:
+          title: Last name
+          type: string
+          maxLength: 150
+          minLength: 1
+        email:
+          title: Email
+          type: string
+          readOnly: true
+          minLength: 1
+        stt:
+          title: Stt
+          type:
+          - integer
+          - 'null'
+        regions:
+          type: array
+          items:
+            type: integer
+          uniqueItems: true
+        login_gov_uuid:
+          title: Login gov uuid
+          type:
+          - string
+          - 'null'
+          format: uuid
+          readOnly: true
+        hhs_id:
+          title: Hhs id
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          minLength: 1
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+          readOnly: true
+        groups:
+          description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
+          type: array
+          items:
+            description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
+            type: string
+            format: uuid
+          readOnly: true
+          uniqueItems: true
+        is_superuser:
+          title: Superuser status
+          description: Designates that this user has all permissions without explicitly assigning them.
+          type: boolean
+          readOnly: true
+        is_staff:
+          title: Staff status
+          description: Designates whether the user can log into this admin site.
+          type: boolean
+          readOnly: true
+        last_login:
+          title: Last login
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        date_joined:
+          title: Date joined
+          type: string
+          format: date-time
+          readOnly: true
+        access_requested_date:
+          title: Access requested date
+          type: string
+          format: date-time
+          readOnly: true
+        account_approval_status:
+          title: Account approval status
+          description: Designates whether this user account is active and approved to access TDP. Users in an approved state are allowed access.
+          type: string
+          enum:
+          - Initial
+          - Access request
+          - Pending
+          - Approved
+          - Denied
+          - Deactivated
+          readOnly: true
+        feature_flags:
+          title: Feature flags
+          description: 'Feature flags for this user. This is a JSON field that can be used to store key-value pairs. E.g: {"some_feature": true}'
+          type: object
+          readOnly: true
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Permission'
+          readOnly: true
+        pending_requests:
+          title: Pending requests
+          type: string
+          readOnly: true
+        create_change_requests:
+          title: Create change requests
+          type: boolean
+          default: true
+        has_pending_first_name_change:
+          title: Has pending first name change
+          type: string
+          readOnly: true
+        has_pending_last_name_change:
+          title: Has pending last name change
+          type: string
+          readOnly: true
+        has_pending_regions_change:
+          title: Has pending regions change
+          type: string
+          readOnly: true
+        has_pending_feature_flags_change:
+          title: Has pending feature flags change
+          type: string
+          readOnly: true
+        has_fra_access:
+          title: Has fra access
+          type: boolean
+          default: false
+    Group:
+      required:
+      - name
+      - permissions
+      type: object
+      properties:
+        id:
+          title: ID
+          type: integer
+          readOnly: true
+        name:
+          title: Name
+          type: string
+          maxLength: 150
+          minLength: 1
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Permission'
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic

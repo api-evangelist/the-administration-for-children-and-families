@@ -1,0 +1,347 @@
+openapi: 3.2.0
+info:
+  title: TDP Reports API
+  description: TANF Data Portal API documentation
+  contact:
+    email: tanfdata@acf.hhs.gov
+  version: v1
+servers:
+- url: https://tanfdata.acf.hhs.gov/
+security:
+- Basic: []
+tags:
+- name: Reports
+paths:
+  /v1/reports/:
+    parameters: []
+    get:
+      operationId: v1_reports_list
+      description: Report file views.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                required:
+                - count
+                - results
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  next:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                  previous:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ReportFile'
+      tags:
+      - Reports
+      summary: V1 reports list
+      x-summary-source: derived
+    post:
+      operationId: v1_reports_create
+      description: Report file views.
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportFile'
+      tags:
+      - Reports
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportFile'
+        required: true
+      summary: V1 reports create
+      x-summary-source: derived
+  /v1/reports/report-sources/:
+    parameters: []
+    get:
+      operationId: v1_reports_report-sources_list
+      description: Report source views for batch uploading report files.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                required:
+                - count
+                - results
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  next:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                  previous:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ReportSource'
+      tags:
+      - Reports
+      summary: V1 reports report sources list
+      x-summary-source: derived
+    post:
+      operationId: v1_reports_report-sources_create
+      description: Create a new report source and trigger async processing.
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportSource'
+      tags:
+      - Reports
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportSource'
+        required: true
+      summary: V1 reports report sources create
+      x-summary-source: derived
+  /v1/reports/report-sources/{id}/:
+    parameters:
+    - name: id
+      in: path
+      description: A unique integer value identifying this report source.
+      required: true
+      schema:
+        type: integer
+    get:
+      operationId: v1_reports_report-sources_read
+      description: Report source views for batch uploading report files.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportSource'
+      tags:
+      - Reports
+      summary: V1 reports report sources read
+      x-summary-source: derived
+  /v1/reports/{id}/:
+    parameters:
+    - name: id
+      in: path
+      description: A unique integer value identifying this report file.
+      required: true
+      schema:
+        type: integer
+    get:
+      operationId: v1_reports_read
+      description: Report file views.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportFile'
+      tags:
+      - Reports
+      summary: V1 reports read
+      x-summary-source: derived
+  /v1/reports/{id}/download/:
+    parameters:
+    - name: id
+      in: path
+      description: A unique integer value identifying this report file.
+      required: true
+      schema:
+        type: integer
+    get:
+      operationId: v1_reports_download
+      description: Retrieve a file from s3 then stream it to the client.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportFile'
+      tags:
+      - Reports
+      summary: V1 reports download
+      x-summary-source: derived
+components:
+  schemas:
+    ReportFile:
+      required:
+      - stt
+      - year
+      type: object
+      properties:
+        id:
+          title: ID
+          type: integer
+          readOnly: true
+        stt:
+          title: Stt
+          type: integer
+        user:
+          title: User
+          type: string
+          format: uuid
+          readOnly: true
+        date_extracted_on:
+          title: Date extracted on
+          type:
+          - string
+          - 'null'
+          format: date
+        year:
+          title: Year
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        report_type:
+          title: Report type
+          type: string
+          enum:
+          - TANF_SSP
+          - FRA
+          default: TANF_SSP
+        version:
+          title: Version
+          type: integer
+          readOnly: true
+        original_filename:
+          title: Original filename
+          type: string
+          readOnly: true
+          minLength: 1
+        extension:
+          title: Extension
+          type: string
+          readOnly: true
+          minLength: 1
+        created_at:
+          title: Created at
+          type: string
+          format: date-time
+          readOnly: true
+        file:
+          title: File
+          type: string
+          readOnly: true
+          format: uri
+    ReportSource:
+      type: object
+      properties:
+        id:
+          title: ID
+          type: integer
+          readOnly: true
+        original_filename:
+          title: Original filename
+          type: string
+          readOnly: true
+          minLength: 1
+        status:
+          title: Status
+          type: string
+          enum:
+          - PENDING
+          - PROCESSING
+          - SUCCEEDED
+          - FAILED
+          readOnly: true
+        uploaded_by:
+          title: Uploaded by
+          type:
+          - string
+          - 'null'
+          format: uuid
+          readOnly: true
+        created_at:
+          title: Created at
+          type: string
+          format: date-time
+          readOnly: true
+        processed_at:
+          title: Processed at
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        num_reports_created:
+          title: Num reports created
+          type: integer
+          readOnly: true
+        error_message:
+          title: Error message
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          minLength: 1
+        date_extracted_on:
+          title: Date extracted on
+          type:
+          - string
+          - 'null'
+          format: date
+        year:
+          title: Year
+          type:
+          - integer
+          - 'null'
+          maximum: 2147483647
+          minimum: -2147483648
+        report_type:
+          title: Report type
+          type: string
+          enum:
+          - TANF_SSP
+          - FRA
+        file:
+          title: File
+          type: string
+          readOnly: true
+          format: uri
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic

@@ -1,0 +1,43 @@
+openapi: 3.2.0
+info:
+  title: TDP Security API
+  description: TANF Data Portal API documentation
+  contact:
+    email: tanfdata@acf.hhs.gov
+  version: v1
+servers:
+- url: https://tanfdata.acf.hhs.gov/
+security:
+- Basic: []
+tags:
+- name: Security
+paths:
+  /v1/security/event-token:
+    parameters: []
+    post:
+      operationId: v1_security_event-token_create
+      description: Process incoming Security Event Token from Login.gov.
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Security
+      summary: V1 security event token create
+      x-summary-source: derived
+  /v1/security/get-token:
+    parameters: []
+    get:
+      operationId: v1_security_get-token_list
+      description: Generate new token for the API user.
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Security
+      summary: V1 security get token list
+      x-summary-source: derived
+components:
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic

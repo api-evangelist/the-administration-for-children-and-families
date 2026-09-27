@@ -1,0 +1,222 @@
+openapi: 3.2.0
+info:
+  title: TDP Feedback API
+  description: TANF Data Portal API documentation
+  contact:
+    email: tanfdata@acf.hhs.gov
+  version: v1
+servers:
+- url: https://tanfdata.acf.hhs.gov/
+security:
+- Basic: []
+tags:
+- name: Feedback
+paths:
+  /v1/feedback/:
+    parameters: []
+    get:
+      operationId: v1_feedback_list
+      description: Feedback viewset.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                required:
+                - count
+                - results
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  next:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                  previous:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Feedback'
+      tags:
+      - Feedback
+      summary: V1 feedback list
+      x-summary-source: derived
+    post:
+      operationId: v1_feedback_create
+      description: Create feedback with user.
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Feedback'
+      tags:
+      - Feedback
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Feedback'
+        required: true
+      summary: V1 feedback create
+      x-summary-source: derived
+  /v1/feedback/{id}/:
+    parameters:
+    - name: id
+      in: path
+      description: A UUID string identifying this Feedback.
+      required: true
+      schema:
+        type: string
+        format: uuid
+    get:
+      operationId: v1_feedback_read
+      description: Feedback viewset.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Feedback'
+      tags:
+      - Feedback
+      summary: V1 feedback read
+      x-summary-source: derived
+    put:
+      operationId: v1_feedback_update
+      description: Update feedback.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Feedback'
+      tags:
+      - Feedback
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Feedback'
+        required: true
+      summary: V1 feedback update
+      x-summary-source: derived
+    patch:
+      operationId: v1_feedback_partial_update
+      description: Feedback viewset.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Feedback'
+      tags:
+      - Feedback
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Feedback'
+        required: true
+      summary: V1 feedback partial update
+      x-summary-source: derived
+    delete:
+      operationId: v1_feedback_delete
+      description: Override the destroy method to disallow it.
+      responses:
+        '204':
+          description: ''
+      tags:
+      - Feedback
+      summary: V1 feedback delete
+      x-summary-source: derived
+components:
+  schemas:
+    FeedbackAttachments:
+      required:
+      - content_type
+      - object_id
+      type: object
+      properties:
+        content_type:
+          title: Content type
+          type: string
+        object_id:
+          title: Object id
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+    Feedback:
+      required:
+      - rating
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          format: uuid
+          readOnly: true
+        rating:
+          title: Rating
+          type: integer
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+        feedback:
+          title: Feedback
+          type:
+          - string
+          - 'null'
+        anonymous:
+          title: Anonymous
+          type: boolean
+        page_url:
+          title: Page url
+          type:
+          - string
+          - 'null'
+          format: uri
+          maxLength: 200
+        feedback_type:
+          title: Feedback type
+          type:
+          - string
+          - 'null'
+          maxLength: 30
+        component:
+          title: Component
+          type: string
+          maxLength: 100
+        widget_id:
+          title: Widget id
+          type: string
+          maxLength: 100
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/FeedbackAttachments'
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic

@@ -1,0 +1,78 @@
+openapi: 3.2.0
+info:
+  title: TDP Feature Flags API
+  description: TANF Data Portal API documentation
+  contact:
+    email: tanfdata@acf.hhs.gov
+  version: v1
+servers:
+- url: https://tanfdata.acf.hhs.gov/
+security:
+- Basic: []
+tags:
+- name: Feature Flags
+paths:
+  /v1/feature-flags/:
+    parameters: []
+    get:
+      operationId: v1_feature-flags_list
+      description: Get the feature flag list from the cache if available, else fetch the queryset.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FeatureFlag'
+      tags:
+      - Feature Flags
+      summary: V1 feature flags list
+      x-summary-source: derived
+  /v1/feature-flags/{feature_name}/:
+    parameters:
+    - name: feature_name
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: v1_feature-flags_read
+      description: Get the feature flag from cache if available, fallback to db.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeatureFlag'
+      tags:
+      - Feature Flags
+      summary: V1 feature flags read
+      x-summary-source: derived
+components:
+  schemas:
+    FeatureFlag:
+      required:
+      - feature_name
+      type: object
+      properties:
+        feature_name:
+          title: Feature name
+          type: string
+          maxLength: 100
+          minLength: 1
+        enabled:
+          title: Enabled
+          type: boolean
+        config:
+          title: Config
+          type: object
+        description:
+          title: Description
+          type: string
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic

@@ -1,0 +1,121 @@
+openapi: 3.2.0
+info:
+  title: TDP Change Request Logs API
+  description: TANF Data Portal API documentation
+  contact:
+    email: tanfdata@acf.hhs.gov
+  version: v1
+servers:
+- url: https://tanfdata.acf.hhs.gov/
+security:
+- Basic: []
+tags:
+- name: Change Request Logs
+paths:
+  /v1/change-request-logs/:
+    parameters: []
+    get:
+      operationId: v1_change-request-logs_list
+      description: ViewSet for change request audit logs.
+      parameters:
+      - name: page
+        in: query
+        description: A page number within the paginated result set.
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                required:
+                - count
+                - results
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  next:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                  previous:
+                    type:
+                    - string
+                    - 'null'
+                    format: uri
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ChangeRequestAuditLog'
+      tags:
+      - Change Request Logs
+      summary: V1 change request logs list
+      x-summary-source: derived
+  /v1/change-request-logs/{id}/:
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: v1_change-request-logs_read
+      description: ViewSet for change request audit logs.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChangeRequestAuditLog'
+      tags:
+      - Change Request Logs
+      summary: V1 change request logs read
+      x-summary-source: derived
+components:
+  schemas:
+    ChangeRequestAuditLog:
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          format: uuid
+          readOnly: true
+        change_request:
+          title: Change request
+          type: string
+          format: uuid
+          readOnly: true
+        action:
+          title: Action
+          description: The action performed (created, approved, rejected)
+          type: string
+          readOnly: true
+          minLength: 1
+        performed_by:
+          title: Performed by
+          type:
+          - string
+          - 'null'
+          format: uuid
+          readOnly: true
+        timestamp:
+          title: Timestamp
+          description: When this action was performed
+          type: string
+          format: date-time
+          readOnly: true
+        details:
+          title: Details
+          description: Additional details about the action
+          type: object
+          readOnly: true
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic

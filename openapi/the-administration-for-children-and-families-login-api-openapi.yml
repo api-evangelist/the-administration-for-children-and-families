@@ -1,0 +1,77 @@
+openapi: 3.2.0
+info:
+  title: TDP Login API
+  description: TANF Data Portal API documentation
+  contact:
+    email: tanfdata@acf.hhs.gov
+  version: v1
+servers:
+- url: https://tanfdata.acf.hhs.gov/
+security:
+- Basic: []
+tags:
+- name: Login
+paths:
+  /v1/login/:
+    parameters: []
+    get:
+      operationId: v1_login_list
+      description: Handle decoding auth token and authenticate user.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AuthToken'
+      tags:
+      - Login
+      summary: V1 login list
+      x-summary-source: derived
+    post:
+      operationId: v1_login_create
+      description: Define methods for handling login request from login.gov.
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthToken'
+      tags:
+      - Login
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+        required: true
+      summary: V1 login create
+      x-summary-source: derived
+components:
+  schemas:
+    AuthToken:
+      required:
+      - username
+      - password
+      type: object
+      properties:
+        username:
+          title: Username
+          type: string
+          minLength: 1
+        password:
+          title: Password
+          type: string
+          minLength: 1
+        token:
+          title: Token
+          type: string
+          readOnly: true
+          minLength: 1
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic

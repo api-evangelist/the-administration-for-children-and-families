@@ -1,0 +1,381 @@
+openapi: 3.2.0
+info:
+  title: TDP Data Files API
+  description: TANF Data Portal API documentation
+  contact:
+    email: tanfdata@acf.hhs.gov
+  version: v1
+servers:
+- url: https://tanfdata.acf.hhs.gov/
+security:
+- Basic: []
+tags:
+- name: Data Files
+paths:
+  /v1/data_files/:
+    parameters: []
+    get:
+      operationId: v1_data_files_list
+      description: Override to handle the list request with url param validation.
+      parameters:
+      - name: stt
+        in: query
+        description: ''
+        required: true
+        schema:
+          type: string
+      - name: quarter
+        in: query
+        description: ''
+        required: false
+        schema:
+          type: string
+      - name: year
+        in: query
+        description: ''
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DataFile'
+      tags:
+      - Data Files
+      summary: V1 data files list
+      x-summary-source: derived
+    post:
+      operationId: v1_data_files_create
+      description: Override create to upload in case of successful scan.
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataFile'
+      tags:
+      - Data Files
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                original_filename:
+                  type: string
+                  maxLength: 256
+                  minLength: 1
+                slug:
+                  type: string
+                  maxLength: 256
+                  minLength: 1
+                extension:
+                  type: string
+                  maxLength: 8
+                  minLength: 1
+                user:
+                  type: string
+                  format: uuid
+                stt:
+                  type: integer
+                year:
+                  type: integer
+                  maximum: 2147483647
+                  minimum: -2147483648
+                quarter:
+                  type: string
+                  enum:
+                  - Q1
+                  - Q2
+                  - Q3
+                  - Q4
+                section:
+                  type: string
+                  enum:
+                  - Active Case Data
+                  - Closed Case Data
+                  - Aggregate Data
+                  - Stratum Data
+                  - Work Outcomes of TANF Exiters
+                  - Secondary School Attainment
+                  - Supplemental Work Outcomes
+                ssp:
+                  type: boolean
+                s3_versioning_id:
+                  type: string
+                  maxLength: 1024
+                  minLength: 1
+                is_program_audit:
+                  type: boolean
+                  default: false
+              required:
+              - file
+              - original_filename
+              - slug
+              - user
+              - stt
+              - year
+              - quarter
+              - section
+              - ssp
+      summary: V1 data files create
+      x-summary-source: derived
+  /v1/data_files/years:
+    parameters: []
+    get:
+      operationId: v1_data_files_years_list
+      description: Handle get action for get list of years there are data_files.
+      parameters:
+      - name: stt
+        in: path
+        description: The unique identifier of the target STT, if not specified will default to user STT
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Data Files
+      summary: V1 data files years list
+      x-summary-source: derived
+  /v1/data_files/years/{stt}:
+    parameters:
+    - name: stt
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      operationId: v1_data_files_years_read
+      description: Handle get action for get list of years there are data_files.
+      parameters:
+      - name: stt
+        in: path
+        description: The unique identifier of the target STT, if not specified will default to user STT
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Data Files
+      summary: V1 data files years read
+      x-summary-source: derived
+  /v1/data_files/{id}/:
+    parameters:
+    - name: id
+      in: path
+      description: A unique integer value identifying this data file.
+      required: true
+      schema:
+        type: integer
+    get:
+      operationId: v1_data_files_read
+      description: Data file views.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataFile'
+      tags:
+      - Data Files
+      summary: V1 data files read
+      x-summary-source: derived
+  /v1/data_files/{id}/download/:
+    parameters:
+    - name: id
+      in: path
+      description: A unique integer value identifying this data file.
+      required: true
+      schema:
+        type: integer
+    get:
+      operationId: v1_data_files_download
+      description: Retrieve a file from s3 then stream it to the client.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataFile'
+      tags:
+      - Data Files
+      summary: V1 data files download
+      x-summary-source: derived
+  /v1/data_files/{id}/download_error_report/:
+    parameters:
+    - name: id
+      in: path
+      description: A unique integer value identifying this data file.
+      required: true
+      schema:
+        type: integer
+    get:
+      operationId: v1_data_files_download_error_report
+      description: Generate and return the parsing error report xlsx.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataFile'
+      tags:
+      - Data Files
+      summary: V1 data files download error report
+      x-summary-source: derived
+components:
+  schemas:
+    DataFileSummary:
+      required:
+      - datafile
+      type: object
+      properties:
+        status:
+          title: Status
+          type: string
+          enum:
+          - Pending
+          - Accepted
+          - Accepted with Errors
+          - Partially Accepted with Errors
+          - Rejected
+        case_aggregates:
+          title: Case aggregates
+          type:
+          - object
+          - 'null'
+        datafile:
+          title: Datafile
+          type: integer
+    DataFile:
+      required:
+      - original_filename
+      - slug
+      - user
+      - stt
+      - year
+      - quarter
+      - section
+      - ssp
+      type: object
+      properties:
+        file:
+          title: File
+          type: string
+          readOnly: true
+          format: uri
+        id:
+          title: ID
+          type: integer
+          readOnly: true
+        original_filename:
+          title: Original filename
+          type: string
+          maxLength: 256
+          minLength: 1
+        slug:
+          title: Slug
+          type: string
+          maxLength: 256
+          minLength: 1
+        extension:
+          title: Extension
+          type: string
+          maxLength: 8
+          minLength: 1
+        user:
+          title: User
+          type: string
+          format: uuid
+        stt:
+          title: Stt
+          type: integer
+        year:
+          title: Year
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        quarter:
+          title: Quarter
+          type: string
+          enum:
+          - Q1
+          - Q2
+          - Q3
+          - Q4
+        section:
+          title: Section
+          type: string
+          enum:
+          - Active Case Data
+          - Closed Case Data
+          - Aggregate Data
+          - Stratum Data
+          - Work Outcomes of TANF Exiters
+          - Secondary School Attainment
+          - Supplemental Work Outcomes
+        created_at:
+          title: Created at
+          type: string
+          format: date-time
+          readOnly: true
+        ssp:
+          title: Ssp
+          type: boolean
+        submitted_by:
+          title: Submitted by
+          type: string
+          readOnly: true
+        version:
+          title: Version
+          type: integer
+          readOnly: true
+        s3_location:
+          title: S3 location
+          type: string
+          readOnly: true
+        s3_versioning_id:
+          title: S3 versioning id
+          type:
+          - string
+          - 'null'
+          maxLength: 1024
+          minLength: 1
+        has_error:
+          title: Has error
+          type: string
+          readOnly: true
+        summary:
+          $ref: '#/components/schemas/DataFileSummary'
+        latest_reparse_file_meta:
+          title: Latest reparse file meta
+          type: string
+          readOnly: true
+        is_program_audit:
+          title: Is program audit
+          type: boolean
+          default: false
+        program_type:
+          title: Program type
+          type: string
+          readOnly: true
+          minLength: 1
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic

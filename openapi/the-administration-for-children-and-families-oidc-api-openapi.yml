@@ -1,0 +1,77 @@
+openapi: 3.2.0
+info:
+  title: TDP Oidc API
+  description: TANF Data Portal API documentation
+  contact:
+    email: tanfdata@acf.hhs.gov
+  version: v1
+servers:
+- url: https://tanfdata.acf.hhs.gov/
+security:
+- Basic: []
+tags:
+- name: OIDC
+paths:
+  /v1/oidc/ams:
+    parameters: []
+    get:
+      operationId: v1_oidc_ams_list
+      description: Handle decoding auth token and authenticate user.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AuthToken'
+      tags:
+      - OIDC
+      summary: V1 oidc ams list
+      x-summary-source: derived
+    post:
+      operationId: v1_oidc_ams_create
+      description: Define methods for handling login request from HHS AMS.
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthToken'
+      tags:
+      - OIDC
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+        required: true
+      summary: V1 oidc ams create
+      x-summary-source: derived
+components:
+  schemas:
+    AuthToken:
+      required:
+      - username
+      - password
+      type: object
+      properties:
+        username:
+          title: Username
+          type: string
+          minLength: 1
+        password:
+          title: Password
+          type: string
+          minLength: 1
+        token:
+          title: Token
+          type: string
+          readOnly: true
+          minLength: 1
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic

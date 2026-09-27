@@ -1,0 +1,30 @@
+openapi: 3.2.0
+info:
+  title: TDP Logs API
+  description: TANF Data Portal API documentation
+  contact:
+    email: tanfdata@acf.hhs.gov
+  version: v1
+servers:
+- url: https://tanfdata.acf.hhs.gov/
+security:
+- Basic: []
+tags:
+- name: Logs
+paths:
+  /v1/logs/:
+    parameters: []
+    post:
+      operationId: v1_logs_create
+      summary: Pass request bodies to the system logger
+      description: Mainly used to log client-side alerts and errors.
+      responses:
+        '201':
+          description: ''
+      tags:
+      - Logs
+components:
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic

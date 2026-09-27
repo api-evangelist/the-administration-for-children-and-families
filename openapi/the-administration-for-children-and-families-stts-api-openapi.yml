@@ -1,0 +1,141 @@
+openapi: 3.2.0
+info:
+  title: TDP Stts API
+  description: TANF Data Portal API documentation
+  contact:
+    email: tanfdata@acf.hhs.gov
+  version: v1
+servers:
+- url: https://tanfdata.acf.hhs.gov/
+security:
+- Basic: []
+tags:
+- name: Stts
+paths:
+  /v1/stts/:
+    parameters: []
+    get:
+      operationId: v1_stts_list
+      description: Simple view to get all STTs.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/STT'
+      tags:
+      - Stts
+      summary: V1 stts list
+      x-summary-source: derived
+  /v1/stts/alpha:
+    parameters: []
+    get:
+      operationId: v1_stts_alpha_list
+      description: Simple view to get all STTs alphabetized.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/STT'
+      tags:
+      - Stts
+      summary: V1 stts alpha list
+      x-summary-source: derived
+  /v1/stts/by_region:
+    parameters: []
+    get:
+      operationId: v1_stts_by_region_list
+      description: Simple view to get all regions and STTs, without pagination.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Region'
+      tags:
+      - Stts
+      summary: V1 stts by region list
+      x-summary-source: derived
+components:
+  schemas:
+    Region:
+      required:
+      - id
+      - stts
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        stts:
+          type: array
+          items:
+            $ref: '#/components/schemas/STT'
+    STT:
+      required:
+      - name
+      type: object
+      properties:
+        id:
+          title: ID
+          type: integer
+          readOnly: true
+        type:
+          title: Type
+          type:
+          - string
+          - 'null'
+          enum:
+          - state
+          - territory
+          - tribe
+        postal_code:
+          title: Postal code
+          type: string
+          readOnly: true
+        name:
+          title: Name
+          type: string
+          maxLength: 1000
+          minLength: 1
+        region:
+          title: Region
+          type:
+          - integer
+          - 'null'
+        filenames:
+          title: Filenames
+          type:
+          - object
+          - 'null'
+        stt_code:
+          title: Stt code
+          type:
+          - string
+          - 'null'
+          maxLength: 3
+        ssp:
+          title: Ssp
+          type:
+          - boolean
+          - 'null'
+        num_sections:
+          title: Num sections
+          type: string
+          readOnly: true
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic

@@ -1,0 +1,31 @@
+openapi: 3.2.0
+info:
+  title: TDP Logout API
+  description: TANF Data Portal API documentation
+  contact:
+    email: tanfdata@acf.hhs.gov
+  version: v1
+servers:
+- url: https://tanfdata.acf.hhs.gov/
+security:
+- Basic: []
+tags:
+- name: Logout
+paths:
+  /v1/logout:
+    parameters: []
+    get:
+      operationId: v1_logout_list
+      description: Destroy user session.
+      responses:
+        '200':
+          description: ''
+      tags:
+      - Logout
+      summary: V1 logout list
+      x-summary-source: derived
+components:
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic
