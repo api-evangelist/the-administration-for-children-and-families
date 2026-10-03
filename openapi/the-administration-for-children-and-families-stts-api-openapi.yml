@@ -68,21 +68,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Region:
-      required:
-      - id
-      - stts
-      type: object
-      properties:
-        id:
-          title: Id
-          type: integer
-          maximum: 2147483647
-          minimum: 0
-        stts:
-          type: array
-          items:
-            $ref: '#/components/schemas/STT'
     STT:
       required:
       - name
@@ -135,6 +120,21 @@ components:
           title: Num sections
           type: string
           readOnly: true
+    Region:
+      required:
+      - id
+      - stts
+      type: object
+      properties:
+        id:
+          title: Id
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        stts:
+          type: array
+          items:
+            $ref: '#/components/schemas/STT'
   securitySchemes:
     Basic:
       type: http

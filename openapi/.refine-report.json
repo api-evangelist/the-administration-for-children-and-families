@@ -21,9 +21,7 @@
     "the-administration-for-children-and-families-users-api-openapi.yml",
     "the-administration-for-children-and-families-plg-auth-check-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 1 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -92,11 +90,24 @@
     "the-administration-for-children-and-families-openapi.json: declared missing tag: Stts",
     "the-administration-for-children-and-families-openapi.json: declared missing tag: Users",
     "the-administration-for-children-and-families-openapi.json: declared missing tag: plg_auth_check",
-    "superseded outputs removed: the-administration-for-children-and-families-v1-api-openapi.yml",
-    "apis.yml register: written (+15 apis, 19 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
+    "the-administration-for-children-and-families-auth-check-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "the-administration-for-children-and-families-change-request-logs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "the-administration-for-children-and-families-change-requests-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "the-administration-for-children-and-families-data-files-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "the-administration-for-children-and-families-feature-flags-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "the-administration-for-children-and-families-feedback-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "the-administration-for-children-and-families-login-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "the-administration-for-children-and-families-logout-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "the-administration-for-children-and-families-logs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "the-administration-for-children-and-families-oidc-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "the-administration-for-children-and-families-plg-auth-check-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "the-administration-for-children-and-families-v1-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+    "the-administration-for-children-and-families-reports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "the-administration-for-children-and-families-roles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "the-administration-for-children-and-families-security-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "the-administration-for-children-and-families-stts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "the-administration-for-children-and-families-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
   ]
 }

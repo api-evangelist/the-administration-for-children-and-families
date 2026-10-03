@@ -248,123 +248,25 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    UserProfile:
+    Group:
       required:
-      - first_name
-      - last_name
+      - name
+      - permissions
       type: object
       properties:
         id:
-          title: Id
-          type: string
-          format: uuid
+          title: ID
+          type: integer
           readOnly: true
-        first_name:
-          title: First name
-          type: string
-          maxLength: 150
-          minLength: 1
-        last_name:
-          title: Last name
+        name:
+          title: Name
           type: string
           maxLength: 150
           minLength: 1
-        email:
-          title: Email
-          type: string
-          readOnly: true
-          minLength: 1
-        stt:
-          title: Stt
-          type:
-          - integer
-          - 'null'
-        regions:
-          type: array
-          items:
-            type: integer
-          uniqueItems: true
-        login_gov_uuid:
-          title: Login gov uuid
-          type:
-          - string
-          - 'null'
-          format: uuid
-          readOnly: true
-        hhs_id:
-          title: Hhs id
-          type:
-          - string
-          - 'null'
-          readOnly: true
-          minLength: 1
-        roles:
-          type: array
-          items:
-            $ref: '#/components/schemas/Group'
-          readOnly: true
-        groups:
-          description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
-          type: array
-          items:
-            description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
-            type: string
-            format: uuid
-          readOnly: true
-          uniqueItems: true
-        is_superuser:
-          title: Superuser status
-          description: Designates that this user has all permissions without explicitly assigning them.
-          type: boolean
-          readOnly: true
-        is_staff:
-          title: Staff status
-          description: Designates whether the user can log into this admin site.
-          type: boolean
-          readOnly: true
-        last_login:
-          title: Last login
-          type:
-          - string
-          - 'null'
-          format: date-time
-          readOnly: true
-        date_joined:
-          title: Date joined
-          type: string
-          format: date-time
-          readOnly: true
-        access_requested_date:
-          title: Access requested date
-          type: string
-          format: date-time
-          readOnly: true
-        account_approval_status:
-          title: Account approval status
-          description: Designates whether this user account is active and approved to access TDP. Users in an approved state are allowed access.
-          type: string
-          enum:
-          - Initial
-          - Access request
-          - Pending
-          - Approved
-          - Denied
-          - Deactivated
-          readOnly: true
-        feature_flags:
-          title: Feature flags
-          description: 'Feature flags for this user. This is a JSON field that can be used to store key-value pairs. E.g: {"some_feature": true}'
-          type: object
-          readOnly: true
         permissions:
           type: array
           items:
             $ref: '#/components/schemas/Permission'
-          readOnly: true
-        pending_requests:
-          title: Pending requests
-          type: string
-          readOnly: true
     Permission:
       required:
       - codename
@@ -493,6 +395,123 @@ components:
           title: Feature flags
           description: 'Feature flags for this user. This is a JSON field that can be used to store key-value pairs. E.g: {"some_feature": true}'
           type: object
+    UserProfile:
+      required:
+      - first_name
+      - last_name
+      type: object
+      properties:
+        id:
+          title: Id
+          type: string
+          format: uuid
+          readOnly: true
+        first_name:
+          title: First name
+          type: string
+          maxLength: 150
+          minLength: 1
+        last_name:
+          title: Last name
+          type: string
+          maxLength: 150
+          minLength: 1
+        email:
+          title: Email
+          type: string
+          readOnly: true
+          minLength: 1
+        stt:
+          title: Stt
+          type:
+          - integer
+          - 'null'
+        regions:
+          type: array
+          items:
+            type: integer
+          uniqueItems: true
+        login_gov_uuid:
+          title: Login gov uuid
+          type:
+          - string
+          - 'null'
+          format: uuid
+          readOnly: true
+        hhs_id:
+          title: Hhs id
+          type:
+          - string
+          - 'null'
+          readOnly: true
+          minLength: 1
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+          readOnly: true
+        groups:
+          description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
+          type: array
+          items:
+            description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
+            type: string
+            format: uuid
+          readOnly: true
+          uniqueItems: true
+        is_superuser:
+          title: Superuser status
+          description: Designates that this user has all permissions without explicitly assigning them.
+          type: boolean
+          readOnly: true
+        is_staff:
+          title: Staff status
+          description: Designates whether the user can log into this admin site.
+          type: boolean
+          readOnly: true
+        last_login:
+          title: Last login
+          type:
+          - string
+          - 'null'
+          format: date-time
+          readOnly: true
+        date_joined:
+          title: Date joined
+          type: string
+          format: date-time
+          readOnly: true
+        access_requested_date:
+          title: Access requested date
+          type: string
+          format: date-time
+          readOnly: true
+        account_approval_status:
+          title: Account approval status
+          description: Designates whether this user account is active and approved to access TDP. Users in an approved state are allowed access.
+          type: string
+          enum:
+          - Initial
+          - Access request
+          - Pending
+          - Approved
+          - Denied
+          - Deactivated
+          readOnly: true
+        feature_flags:
+          title: Feature flags
+          description: 'Feature flags for this user. This is a JSON field that can be used to store key-value pairs. E.g: {"some_feature": true}'
+          type: object
+          readOnly: true
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Permission'
+          readOnly: true
+        pending_requests:
+          title: Pending requests
+          type: string
+          readOnly: true
     UserProfileChangeRequest:
       required:
       - first_name
@@ -634,25 +653,6 @@ components:
           title: Has fra access
           type: boolean
           default: false
-    Group:
-      required:
-      - name
-      - permissions
-      type: object
-      properties:
-        id:
-          title: ID
-          type: integer
-          readOnly: true
-        name:
-          title: Name
-          type: string
-          maxLength: 150
-          minLength: 1
-        permissions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Permission'
   securitySchemes:
     Basic:
       type: http

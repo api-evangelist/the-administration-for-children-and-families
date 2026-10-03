@@ -32,6 +32,25 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    Group:
+      required:
+      - name
+      - permissions
+      type: object
+      properties:
+        id:
+          title: ID
+          type: integer
+          readOnly: true
+        name:
+          title: Name
+          type: string
+          maxLength: 150
+          minLength: 1
+        permissions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Permission'
     Permission:
       required:
       - codename
@@ -58,25 +77,6 @@ components:
           - string
           - 'null'
           minLength: 1
-    Group:
-      required:
-      - name
-      - permissions
-      type: object
-      properties:
-        id:
-          title: ID
-          type: integer
-          readOnly: true
-        name:
-          title: Name
-          type: string
-          maxLength: 150
-          minLength: 1
-        permissions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Permission'
   securitySchemes:
     Basic:
       type: http
