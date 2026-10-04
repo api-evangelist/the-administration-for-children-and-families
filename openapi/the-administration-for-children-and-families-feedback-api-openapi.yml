@@ -150,20 +150,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    FeedbackAttachments:
-      required:
-      - content_type
-      - object_id
-      type: object
-      properties:
-        content_type:
-          title: Content type
-          type: string
-        object_id:
-          title: Object id
-          type: integer
-          maximum: 2147483647
-          minimum: -2147483648
     Feedback:
       required:
       - rating
@@ -216,6 +202,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FeedbackAttachments'
+    FeedbackAttachments:
+      required:
+      - content_type
+      - object_id
+      type: object
+      properties:
+        content_type:
+          title: Content type
+          type: string
+        object_id:
+          title: Object id
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
   securitySchemes:
     Basic:
       type: http
