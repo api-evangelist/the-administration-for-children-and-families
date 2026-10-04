@@ -266,6 +266,8 @@ apis:
   humanURL: https://tanfdata.acf.hhs.gov/
   baseURL: https://tanfdata.acf.hhs.gov/
   tags:
+  - OIDC
+  tags_raw:
   - Oidc
   properties:
   - type: OpenAPI
@@ -326,11 +328,16 @@ apis:
   humanURL: https://tanfdata.acf.hhs.gov/
   baseURL: https://tanfdata.acf.hhs.gov/
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
     url: openapi/the-administration-for-children-and-families-users-api-openapi.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/the-administration-for-children-and-families-capability-edges.yml
+    name: The Administration for Children and Families Business Capability Map
   - type: IssueTracker
     url: https://github.com/HHS/TANF-app/issues
   - type: SecurityPolicy
