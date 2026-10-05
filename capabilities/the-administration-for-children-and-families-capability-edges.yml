@@ -1,0 +1,32 @@
+slug: the-administration-for-children-and-families
+provider: The Administration for Children and Families
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Feature Flags
+  spec_file: the-administration-for-children-and-families-feature-flags-api-openapi.yml
+  capability_id: BC-4210.50
+  capability_id_l1: BC-4210
+  capability_name: Feature Flag Management
+  confidence: 0.85
+  evidence: 'GET /v1/feature-flags/{feature_name}/ ... schemas: FeatureFlag'
+  reason: Exposes named feature flags for runtime feature control, which is squarely feature flag management.
+- tag: Roles
+  spec_file: the-administration-for-children-and-families-roles-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.78
+  evidence: 'GET /v1/roles/ v1_roles_list; schemas: Group, Permission'
+  reason: Exposes roles expressed as groups and permissions, i.e. access rights administration for portal
+    users.
