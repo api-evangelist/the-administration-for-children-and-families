@@ -240,28 +240,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    DataFileSummary:
-      required:
-      - datafile
-      type: object
-      properties:
-        status:
-          title: Status
-          type: string
-          enum:
-          - Pending
-          - Accepted
-          - Accepted with Errors
-          - Partially Accepted with Errors
-          - Rejected
-        case_aggregates:
-          title: Case aggregates
-          type:
-          - object
-          - 'null'
-        datafile:
-          title: Datafile
-          type: integer
     DataFile:
       required:
       - original_filename
@@ -375,6 +353,28 @@ components:
           type: string
           readOnly: true
           minLength: 1
+    DataFileSummary:
+      required:
+      - datafile
+      type: object
+      properties:
+        status:
+          title: Status
+          type: string
+          enum:
+          - Pending
+          - Accepted
+          - Accepted with Errors
+          - Partially Accepted with Errors
+          - Rejected
+        case_aggregates:
+          title: Case aggregates
+          type:
+          - object
+          - 'null'
+        datafile:
+          title: Datafile
+          type: integer
   securitySchemes:
     Basic:
       type: http
