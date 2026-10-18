@@ -266,9 +266,10 @@ apis:
   humanURL: https://tanfdata.acf.hhs.gov/
   baseURL: https://tanfdata.acf.hhs.gov/
   tags:
-  - OIDC
+  - OpenID Connect
   tags_raw:
   - Oidc
+  - OIDC
   properties:
   - type: OpenAPI
     url: openapi/the-administration-for-children-and-families-oidc-api-openapi.yml
